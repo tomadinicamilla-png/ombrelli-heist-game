@@ -1884,8 +1884,9 @@ export default function OmbrelliHeistGame() {
   style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}
 >
   <div className="text-[8px] mb-1 text-slate-300">OBJECTIVE</div>
-  <div className="text-sm md:text-base leading-none">UMBRELLAS: {remaining}</div>
-  <div className="mt-2 text-[8px] text-slate-300">DON'T GET CAUGHT</div>
+    <div className="text-sm md:text-base leading-none">UMBRELLAS: {remaining}</div>
+    <div className="mt-2 text-[8px] text-slate-300">DON'T GET CAUGHT</div>
+  </div>
 </div>
 
           <div className="absolute top-[92px] left-3 w-[72%] z-20">

@@ -1675,9 +1675,9 @@ export default function OmbrelliHeistGame() {
       transition={{ duration: 0.18 }}
     >
       <div
-        className="max-w-7xl mx-auto border-4 border-black bg-[#79cbff] overflow-hidden rounded-[18px]"
-        style={{ ...pxShadow(), ...scanlines() }}
-      >
+  className="mx-auto w-fit border-4 border-black bg-[#79cbff] overflow-hidden rounded-[18px]"
+  style={{ ...pxShadow(), ...scanlines() }}
+>
         <div className="relative w-full overflow-hidden" style={{ width: W, height: H }}>
           <div
             className={`absolute inset-0 bg-gradient-to-b ${

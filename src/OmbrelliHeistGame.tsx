@@ -1732,17 +1732,19 @@ export default function OmbrelliHeistGame() {
           <div className="absolute inset-x-0 bottom-[92px] h-1 bg-black/20" />
 
           <div
-            className="absolute left-8 bottom-24 w-[520px] h-[290px] rounded-[18px] border-4 border-black bg-[#ff7a4f]"
+            className="absolute left-8 bottom-24 w-[520px] h-[290px] rounded-[18px] border-4 border-black bg-[#c95a34]"
             style={pxShadow()}
           >
-            <div className="absolute inset-x-0 top-0 h-12 rounded-t-[12px] bg-[#ff6140] border-b-4 border-black" />
-            <div className="absolute left-7 top-16 text-[28px] md:text-[34px] text-yellow-200 drop-shadow-[2px_2px_0_#000]">
-              OSTERIA
-            </div>
+           <div
+  className="absolute top-[8px] left-1/2 -translate-x-1/2 px-4 py-1 border-4 border-black bg-yellow-300 text-black text-lg tracking-widest"
+  style={pxShadow()}
+>
+  OSTERIA
+</div>
             <div
-              className="absolute left-24 bottom-0 w-28 h-[170px] rounded-t-[10px] border-x-4 border-t-4 border-black bg-[#ffc06a]"
-              style={pxShadow()}
-            />
+  className="absolute left-24 bottom-0 w-28 h-[150px] rounded-t-[10px] border-x-4 border-t-4 border-black bg-[#ffc06a]"
+  style={pxShadow()}
+/>
 
             <WindowFrame
               side="left"

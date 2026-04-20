@@ -1732,88 +1732,204 @@ export default function OmbrelliHeistGame() {
           <div className="absolute inset-x-0 bottom-[92px] h-1 bg-black/20" />
 
           <div
-            className="absolute left-8 bottom-24 w-[520px] h-[290px] rounded-[18px] border-4 border-black bg-[#c95a34]"
-            style={pxShadow()}
-          >
-           <div
-  className="absolute top-[8px] left-1/2 -translate-x-1/2 px-4 py-1 border-4 border-black bg-yellow-300 text-black text-lg tracking-widest"
-  style={pxShadow()}
+  className="absolute left-[86px] bottom-[88px] w-[620px] h-[340px] rounded-[20px] border-4 border-black overflow-visible"
+  style={{
+    ...pxShadow(),
+    backgroundColor: "#b85b35",
+    backgroundImage: `
+      linear-gradient(rgba(0,0,0,0.16) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(0,0,0,0.14) 2px, transparent 2px),
+      linear-gradient(#c86a42, #a84d2a)
+    `,
+    backgroundSize: "26px 14px, 52px 28px, 100% 100%",
+  }}
 >
-  OSTERIA
+  {/* tetto */}
+  <div
+    className="absolute -top-[22px] left-[-10px] right-[-10px] h-[86px] rounded-t-[20px] border-4 border-black"
+    style={{
+      ...pxShadow(),
+      backgroundColor: "#7c3f24",
+      backgroundImage: `
+        repeating-linear-gradient(
+          90deg,
+          #8d4a2a 0px,
+          #8d4a2a 22px,
+          #6f361d 22px,
+          #6f361d 24px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,0.08) 0px,
+          rgba(255,255,255,0.08) 2px,
+          transparent 2px,
+          transparent 20px
+        )
+      `,
+      backgroundSize: "100% 100%, 100% 100%",
+    }}
+  />
+
+  {/* fila di luci */}
+  {[
+    "left-[48px]",
+    "left-[128px]",
+    "left-[208px]",
+    "left-[288px]",
+    "left-[368px]",
+    "left-[448px]",
+    "left-[528px]",
+  ].map((pos, i) => (
+    <div
+      key={i}
+      className={`absolute -top-[6px] ${pos} w-[12px] h-[12px] rounded-full border-2 border-black bg-yellow-200`}
+      style={{ boxShadow: "0 0 10px rgba(255,240,140,.9)" }}
+    />
+  ))}
+
+  {/* insegna */}
+  <div
+    className="absolute top-[-2px] left-1/2 -translate-x-1/2 px-8 py-2 border-4 border-black bg-yellow-300 text-black text-[26px] tracking-[0.18em] z-10"
+    style={pxShadow()}
+  >
+    OSTERIA
+  </div>
+
+  {/* tenda sinistra alta */}
+  <div
+    className="absolute top-[68px] left-[132px] flex border-4 border-black rounded-b-[10px] overflow-hidden"
+    style={pxShadow()}
+  >
+    {["bg-red-500", "bg-white", "bg-red-500", "bg-white", "bg-red-500", "bg-white"].map(
+      (c, i) => (
+        <div key={i} className={`w-[18px] h-[34px] ${c} rounded-b-full`} />
+      )
+    )}
+  </div>
+
+  {/* tenda destra alta */}
+  <div
+    className="absolute top-[68px] left-[386px] flex border-4 border-black rounded-b-[10px] overflow-hidden"
+    style={pxShadow()}
+  >
+    {["bg-red-500", "bg-white", "bg-red-500", "bg-white", "bg-red-500", "bg-white"].map(
+      (c, i) => (
+        <div key={i} className={`w-[18px] h-[34px] ${c} rounded-b-full`} />
+      )
+    )}
+  </div>
+
+  {/* cornici decorative dietro alle finestre */}
+  <div
+    className="absolute top-[102px] left-[214px] w-[124px] h-[122px] rounded-[12px] border-4 border-black bg-[#5ca7d8]"
+    style={{
+      boxShadow: "4px 4px 0 #000",
+      backgroundImage:
+        "linear-gradient(to bottom, rgba(255,255,255,.3), transparent 35%, rgba(0,0,0,.08))",
+    }}
+  />
+  <div
+    className="absolute top-[102px] left-[358px] w-[124px] h-[122px] rounded-[12px] border-4 border-black bg-[#5ca7d8]"
+    style={{
+      boxShadow: "4px 4px 0 #000",
+      backgroundImage:
+        "linear-gradient(to bottom, rgba(255,255,255,.3), transparent 35%, rgba(0,0,0,.08))",
+    }}
+  />
+
+  {/* porta */}
+  <div
+    className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[116px] h-[150px] rounded-t-[14px] border-4 border-black bg-[#c89458]"
+    style={pxShadow()}
+  >
+    <div className="absolute inset-x-[12px] top-[12px] bottom-[18px] border-4 border-black/20 rounded-t-[8px]" />
+    <div className="absolute right-[16px] top-1/2 -translate-y-1/2 w-[12px] h-[12px] rounded-full border-2 border-black bg-yellow-300" />
+  </div>
+
+  {/* lampade sopra porta */}
+  <div
+    className="absolute left-[168px] top-[152px] w-[10px] h-[28px] border-2 border-black bg-yellow-200 rounded-full"
+    style={{ boxShadow: "0 0 10px rgba(255,240,140,.85)" }}
+  />
+  <div
+    className="absolute right-[168px] top-[152px] w-[10px] h-[28px] border-2 border-black bg-yellow-200 rounded-full"
+    style={{ boxShadow: "0 0 10px rgba(255,240,140,.85)" }}
+  />
+
+  {/* zoccolo */}
+  <div className="absolute inset-x-0 bottom-0 h-[16px] bg-[#7a3a20] border-t-4 border-black" />
+
+  {/* finestre/attesa cameriere */}
+  <WindowFrame
+    side="left"
+    waiterVisible={
+      waiterVisible ||
+      (caughtActor?.type === "waiter" && caughtActor.side === "left")
+    }
+    curtainLift={curtainLift}
+    dangerSide={waiterSide}
+  />
+  <WindowFrame
+    side="right"
+    waiterVisible={
+      waiterVisible ||
+      (caughtActor?.type === "waiter" && caughtActor.side === "right")
+    }
+    curtainLift={curtainLift}
+    dangerSide={waiterSide}
+  />
+
+  {/* tendine sopra le finestre reali */}
+  <motion.div
+    className="absolute left-[220px] top-[86px] w-[112px] h-[18px] border-4 border-black flex overflow-hidden rounded-t-[6px]"
+    style={pxShadow()}
+    animate={curtainLift === "left" ? { y: [-3, 0] } : { y: 0 }}
+    transition={{ duration: 0.12 }}
+  >
+    <div className="flex-1 bg-red-500" />
+    <div className="flex-1 bg-white" />
+    <div className="flex-1 bg-red-500" />
+    <div className="flex-1 bg-white" />
+  </motion.div>
+
+  <motion.div
+    className="absolute left-[364px] top-[86px] w-[112px] h-[18px] border-4 border-black flex overflow-hidden rounded-t-[6px]"
+    style={pxShadow()}
+    animate={curtainLift === "right" ? { y: [-3, 0] } : { y: 0 }}
+    transition={{ duration: 0.12 }}
+  >
+    <div className="flex-1 bg-red-500" />
+    <div className="flex-1 bg-white" />
+    <div className="flex-1 bg-red-500" />
+    <div className="flex-1 bg-white" />
+  </motion.div>
+
+  <Waiter
+    visible={
+      (waiterVisible && waiterSide === "left") ||
+      (caughtActor?.type === "waiter" && caughtActor.side === "left")
+    }
+    alert={
+      (waiterVisible && stealing) ||
+      (caughtActor?.type === "waiter" && caughtActor.side === "left")
+    }
+    left={220}
+    top={102}
+  />
+
+  <Waiter
+    visible={
+      (waiterVisible && waiterSide === "right") ||
+      (caughtActor?.type === "waiter" && caughtActor.side === "right")
+    }
+    alert={
+      (waiterVisible && stealing) ||
+      (caughtActor?.type === "waiter" && caughtActor.side === "right")
+    }
+    left={364}
+    top={102}
+  />
 </div>
-            <div
-  className="absolute left-24 bottom-0 w-28 h-[150px] rounded-t-[10px] border-x-4 border-t-4 border-black bg-[#ffc06a]"
-  style={pxShadow()}
-/>
-
-            <WindowFrame
-              side="left"
-              waiterVisible={
-                waiterVisible ||
-                (caughtActor?.type === "waiter" && caughtActor.side === "left")
-              }
-              curtainLift={curtainLift}
-              dangerSide={waiterSide}
-            />
-            <WindowFrame
-              side="right"
-              waiterVisible={
-                waiterVisible ||
-                (caughtActor?.type === "waiter" && caughtActor.side === "right")
-              }
-              curtainLift={curtainLift}
-              dangerSide={waiterSide}
-            />
-
-            <motion.div
-              className="absolute left-[220px] top-[38px] w-[112px] h-[16px] border-4 border-black flex overflow-hidden rounded-t-[6px]"
-              style={pxShadow()}
-              animate={curtainLift === "left" ? { y: [-3, 0] } : { y: 0 }}
-              transition={{ duration: 0.12 }}
-            >
-              <div className="flex-1 bg-red-500" />
-              <div className="flex-1 bg-white" />
-              <div className="flex-1 bg-red-500" />
-              <div className="flex-1 bg-white" />
-            </motion.div>
-
-            <motion.div
-              className="absolute left-[364px] top-[38px] w-[112px] h-[16px] border-4 border-black flex overflow-hidden rounded-t-[6px]"
-              style={pxShadow()}
-              animate={curtainLift === "right" ? { y: [-3, 0] } : { y: 0 }}
-              transition={{ duration: 0.12 }}
-            >
-              <div className="flex-1 bg-red-500" />
-              <div className="flex-1 bg-white" />
-              <div className="flex-1 bg-red-500" />
-              <div className="flex-1 bg-white" />
-            </motion.div>
-
-            <Waiter
-              visible={
-                (waiterVisible && waiterSide === "left") ||
-                (caughtActor?.type === "waiter" && caughtActor.side === "left")
-              }
-              alert={
-                (waiterVisible && stealing) ||
-                (caughtActor?.type === "waiter" && caughtActor.side === "left")
-              }
-              left={220}
-              top={54}
-            />
-            <Waiter
-              visible={
-                (waiterVisible && waiterSide === "right") ||
-                (caughtActor?.type === "waiter" && caughtActor.side === "right")
-              }
-              alert={
-                (waiterVisible && stealing) ||
-                (caughtActor?.type === "waiter" && caughtActor.side === "right")
-              }
-              left={364}
-              top={54}
-            />
-          </div>
 
           <div
             className="absolute left-[470px] bottom-[94px] w-[206px] h-[120px] rounded-[16px] border-4 border-black bg-[#c0c7d1]"

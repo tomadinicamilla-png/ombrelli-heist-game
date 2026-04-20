@@ -1869,7 +1869,7 @@ export default function OmbrelliHeistGame() {
               <button
                 type="button"
                 onClick={paused ? resumeGame : pauseGame}
-                className="border-4 border-black bg-red-500 text-white px-3 py-2 min-w-[92px] rounded-[8px]"
+                className="border-4 border-black bg-red-500 hover:bg-red-400 text-white px-3 py-2 min-w-[92px] rounded-[8px] transition"
                 style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}
               >
                 <div className="text-[8px] mb-1 text-white/80">CTRL</div>
@@ -1880,22 +1880,22 @@ export default function OmbrelliHeistGame() {
             </div>
 
             <div
-              className="absolute top-0 left-[calc(75%-180px)] border-4 border-black bg-slate-950/90 text-white px-3 py-2 min-w-[180px] rounded-[8px]"
-              style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}
-            >
-              <div className="text-[8px] mb-1 text-slate-300">OBJECTIVE</div>
-             <div className="text-sm md:text-base leading-none">UMBRELLAS: {remaining}</div>
-            </div>
-          </div>
+  className="absolute top-0 right-0 border-4 border-black bg-slate-950/90 text-white px-3 py-2 w-[190px] rounded-[8px]"
+  style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}
+>
+  <div className="text-[8px] mb-1 text-slate-300">OBJECTIVE</div>
+  <div className="text-sm md:text-base leading-none">UMBRELLAS: {remaining}</div>
+  <div className="mt-2 text-[8px] text-slate-300">DON'T GET CAUGHT</div>
+</div>
 
-          <div className="absolute top-[92px] left-3 w-[75%] z-20">
+          <div className="absolute top-[92px] left-3 w-[72%] z-20">
             <div
               className="border-4 border-black bg-slate-950/90 px-3 py-2 rounded-[10px] text-white"
               style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}
             >
               <div className="text-[8px] text-slate-300 mb-1">STATUS</div>
 
-              <div className="text-[10px] leading-4 text-white break-words">
+              <div className="text-[10px] leading-5 text-white break-words min-h-[34px]">
                 {paused ? "Paused" : message}
               </div>
 
@@ -1930,7 +1930,7 @@ export default function OmbrelliHeistGame() {
             <button
               type="button"
               onClick={startGame}
-              className="h-12 px-4 bg-yellow-300 text-black border-4 border-black rounded-[10px] text-sm"
+              className="h-12 px-4 bg-yellow-300 hover:bg-yellow-200 text-black border-4 border-black rounded-[10px] text-sm transition"
               style={pxShadow()}
             >
               RESTART
@@ -1992,7 +1992,7 @@ export default function OmbrelliHeistGame() {
                 >
                   <div className="text-3xl mb-4">{phase === "won" ? "🏆" : "☔"}</div>
                   <h2 className="text-2xl md:text-3xl text-red-600">
-                    {phase === "won" ? "Nice steal!" : "You got caught!"}
+                    {phase === "won" ? "YOU WIN!" : "GAME OVER"}
                   </h2>
                   <p className="mt-4 text-[11px] leading-6 text-slate-950">{message}</p>
 
@@ -2040,7 +2040,7 @@ export default function OmbrelliHeistGame() {
 
                   <button
                     type="button"
-                    className="mt-6 px-6 py-3 bg-yellow-300 text-black border-4 border-black rounded-[10px] text-sm"
+                    className="mt-6 px-6 py-3 bg-yellow-300 hover:bg-yellow-200 text-black border-4 border-black rounded-[10px] text-sm transition"
                     style={pxShadow()}
                     onClick={startGame}
                   >

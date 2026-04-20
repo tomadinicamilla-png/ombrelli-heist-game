@@ -48,15 +48,15 @@ const WEATHER: Record<
   RainLevel,
   { label: string; timeMult: number; scoreMult: number; rainCount: number }
 > = {
-  light: { label: "PIOGGIA MODESTA", timeMult: 1, scoreMult: 1, rainCount: 44 },
+  light: { label: "LIGHT RAIN", timeMult: 1, scoreMult: 1, rainCount: 44 },
   medium: {
-    label: "PIOGGIA INSISTENTE",
+    label: "HEAVY RAIN",
     timeMult: 1.18,
     scoreMult: 1.15,
     rainCount: 84,
   },
   heavy: {
-    label: "TEMPORALE",
+    label: "STORM",
     timeMult: 1.42,
     scoreMult: 1.35,
     rainCount: 128,
@@ -102,9 +102,9 @@ const UMBRELLA_TYPES: readonly UmbrellaType[] = [
 ];
 
 const NPCS: readonly { key: NpcKey; name: string }[] = [
-  { key: "lady-dog", name: "La signora col cane" },
-  { key: "old-man", name: "Il vecchietto" },
-  { key: "couple", name: "La coppietta" },
+  { key: "lady-dog", name: "The lady with the dog" },
+  { key: "old-man", name: "The old man" },
+  { key: "couple", name: "The happy couple" },
 ];
 
 function pxShadow(color = "#000") {
@@ -937,22 +937,23 @@ function TitleScreen({ onStart }: { onStart: () => void }) {
       >
         <div className="text-4xl md:text-5xl text-red-600 mb-4">OMBRELLI HEIST</div>
         <p className="text-[11px] md:text-[12px] leading-6 text-slate-950 max-w-2xl mx-auto">
-          Ruba tutti gli ombrelli dalla rastrelliera senza farti beccare da camerieri
-          e clienti. Più il tempo è pessimo, più il colpo rende.
+          Steal all the umbrellas from the rack without getting caught.
+Waiters and customers can spot you while stealing.
+The worse the weather, the higher the risk… and the reward.
         </p>
 
         <div className="mt-6 grid md:grid-cols-3 gap-3 text-left">
           <div className="rounded-[10px] border-4 border-black bg-white p-4" style={pxShadow()}>
-            <div className="text-[8px] text-slate-500 mb-1">OBIETTIVO</div>
-            <div className="text-sm leading-5">Ripulisci la rastrelliera fino al livello finale.</div>
+            <div className="text-[8px] text-slate-500 mb-1">MISSION</div>
+            <div className="text-sm leading-5">Clear the umbrella rack before time runs out.</div>
           </div>
           <div className="rounded-[10px] border-4 border-black bg-white p-4" style={pxShadow()}>
-            <div className="text-[8px] text-slate-500 mb-1">ATTENZIONE</div>
-            <div className="text-sm leading-5">Camerieri e clienti possono vederti mentre rubi.</div>
+            <div className="text-[8px] text-slate-500 mb-1">BEWARE</div>
+            <div className="text-sm leading-5">Waiters and customers can catch you while stealing.</div>
           </div>
           <div className="rounded-[10px] border-4 border-black bg-white p-4" style={pxShadow()}>
-            <div className="text-[8px] text-slate-500 mb-1">METEO</div>
-            <div className="text-sm leading-5">Con pioggia forte aumentano rischio e punti.</div>
+            <div className="text-[8px] text-slate-500 mb-1">WEATHER</div>
+            <div className="text-sm leading-5">Heavy rain increases both risk and score.</div>
           </div>
         </div>
 
@@ -962,7 +963,7 @@ function TitleScreen({ onStart }: { onStart: () => void }) {
           className="mt-8 px-6 py-3 bg-yellow-300 text-black border-4 border-black rounded-[10px] text-sm"
           style={pxShadow()}
         >
-          START
+          START GAME
         </button>
       </div>
     </div>
@@ -1290,7 +1291,7 @@ export default function OmbrelliHeistGame() {
     setLightning(false);
     setNearMiss(false);
     setPaused(false);
-    setMessage("Occhi aperti. Mani veloci.");
+    setMessage("Eyes sharp. Hands quick.");
     activeStealRef.current = false;
     document.body.style.transform = "scale(1)";
     document.body.style.transition = "";
@@ -1453,7 +1454,7 @@ export default function OmbrelliHeistGame() {
         if (activeStealRef.current) {
           triggerCaught(
             { type: "waiter", side },
-            "Il cameriere coi baffi ti ha visto dalla finestra."
+            "Spotted! The mustached waiter saw you."
           );
           return;
         }
@@ -1466,7 +1467,7 @@ export default function OmbrelliHeistGame() {
             }
             triggerCaught(
               { type: "waiter", side },
-              "Il cameriere coi baffi ti ha visto dalla finestra."
+              "Spotted! The mustached waiter saw you."
             );
           }
         }, 50);
@@ -1524,7 +1525,7 @@ export default function OmbrelliHeistGame() {
         }
         triggerCaught(
           { type: "customer", kind: npc.key },
-          `${npc.name} ti ha visto mentre sfilavi un ombrello.`
+          `${npc.name} spotted you stealing an umbrella.`
         );
         return;
       }
@@ -1551,9 +1552,9 @@ export default function OmbrelliHeistGame() {
     setCurrentUmbrella(umbrella);
     activeStealRef.current = true;
     setMessage(
-      `Stai rubando: ${umbrella.label}. ${
+      `You're stealing: ${umbrella.label}. ${
         Math.round((effectiveMs / 1000) * 10) / 10
-      }s con ${WEATHER[weather].label.toLowerCase()}, ${umbrella.points} punti.`
+      }s con ${WEATHER[weather].label.toLowerCase()}, ${umbrella.points} points.`
     );
 
     const startedAt = performance.now();
@@ -1587,7 +1588,7 @@ export default function OmbrelliHeistGame() {
 
         setScore((current) => current + gained);
         setMessage(
-          `Ombrello portato via. +${gained} punti. Bonus meteo: x${WEATHER[weather].scoreMult.toFixed(
+          `Stolen umbrella. +${gained} points. Bonus weather: x${WEATHER[weather].scoreMult.toFixed(
             2
           )}.`
         );
@@ -1640,7 +1641,7 @@ export default function OmbrelliHeistGame() {
     if (level >= MAX_LEVEL) {
       endGame(
         true,
-        "Hai ripulito la rastrelliera e sei sparito nella pioggia come una leggenda urbana arcade."
+        "Rack cleared. You vanished into the rain like a legend."
       );
       return;
     }
@@ -1659,7 +1660,7 @@ export default function OmbrelliHeistGame() {
     setCaughtActor(null);
     setNearMiss(false);
     activeStealRef.current = false;
-    setMessage(`Livello ${nextLevel}. L'osteria sospetta qualcosa.`);
+    setMessage(`Level ${nextLevel}. They're becoming more suspicious...`);
   }, [umbrellas, level, phase, paused]);
 
   if (!started || phase === "menu") {
@@ -1860,7 +1861,7 @@ export default function OmbrelliHeistGame() {
 
           <div className="absolute top-3 left-3 right-3 z-20 relative">
             <div className="flex items-start gap-2">
-              <HudBadge label="LIV" value={`${level}/${MAX_LEVEL}`} />
+              <HudBadge label="LEVEL" value={`${level}/${MAX_LEVEL}`} />
               <HudBadge label="TIME" value={`${elapsed.toFixed(1)}s`} />
               <HudBadge label="COMBO" value={`x${combo}`} />
               <HudBadge label="SCORE" value={score} accent />
@@ -1873,7 +1874,7 @@ export default function OmbrelliHeistGame() {
               >
                 <div className="text-[8px] mb-1 text-white/80">CTRL</div>
                 <div className="text-sm md:text-base leading-none">
-                  {paused ? "PLAY" : "PAUSA"}
+                  {paused ? "PLAY" : "PAUSE"}
                 </div>
               </button>
             </div>
@@ -1882,8 +1883,8 @@ export default function OmbrelliHeistGame() {
               className="absolute top-0 left-[calc(75%-180px)] border-4 border-black bg-slate-950/90 text-white px-3 py-2 min-w-[180px] rounded-[8px]"
               style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}
             >
-              <div className="text-[8px] mb-1 text-slate-300">OBIETTIVO</div>
-              <div className="text-sm md:text-base leading-none">OMBRELLI: {remaining}</div>
+              <div className="text-[8px] mb-1 text-slate-300">OBJECTIVE</div>
+              <div className="text-sm md:text-base leading-none"><UMBRELLAS></UMBRELLAS>: {remaining}</div>
             </div>
           </div>
 
@@ -1892,10 +1893,10 @@ export default function OmbrelliHeistGame() {
               className="border-4 border-black bg-slate-950/90 px-3 py-2 rounded-[10px] text-white"
               style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}
             >
-              <div className="text-[8px] text-slate-300 mb-1">STATO</div>
+              <div className="text-[8px] text-slate-300 mb-1">STATUS</div>
 
               <div className="text-[10px] leading-4 text-white break-words">
-                {paused ? "Gioco in pausa." : message}
+                {paused ? "Paused" : message}
               </div>
 
               <div className="mt-2 text-[8px] text-slate-300 leading-4">
@@ -1906,7 +1907,7 @@ export default function OmbrelliHeistGame() {
 
               <div className="mt-4">
                 <div className="flex items-center justify-between text-[8px] mb-1 text-white">
-                  <span>FURTO</span>
+                  <span>STEAL PROGRESS</span>
                   <span>{Math.round(clamp(stealProgress, 0, 100))}%</span>
                 </div>
 
@@ -1950,7 +1951,7 @@ export default function OmbrelliHeistGame() {
                 >
                   <div className="text-2xl md:text-3xl text-red-600">IN PAUSA</div>
                   <p className="mt-3 text-[10px] leading-5 text-slate-950">
-                    Il colpo è fermo. Nessuno ti vede, nessuno si muove.
+                    The heist is still. No one sees you. No one moves.
                   </p>
                   <button
                     type="button"
@@ -1958,7 +1959,7 @@ export default function OmbrelliHeistGame() {
                     className="mt-5 px-5 py-3 bg-yellow-300 text-black border-4 border-black rounded-[10px] text-sm"
                     style={pxShadow()}
                   >
-                    RIPRENDI
+                    RESUME
                   </button>
 
                   <button
@@ -1991,7 +1992,7 @@ export default function OmbrelliHeistGame() {
                 >
                   <div className="text-3xl mb-4">{phase === "won" ? "🏆" : "☔"}</div>
                   <h2 className="text-2xl md:text-3xl text-red-600">
-                    {phase === "won" ? "COLPO RIUSCITO" : "TI HANNO BECCATO"}
+                    {phase === "won" ? "Nice steal!" : "You got caught!"}
                   </h2>
                   <p className="mt-4 text-[11px] leading-6 text-slate-950">{message}</p>
 
@@ -2000,14 +2001,14 @@ export default function OmbrelliHeistGame() {
                       className="rounded-[10px] border-4 border-black bg-white p-4"
                       style={pxShadow()}
                     >
-                      <div className="text-[8px] text-slate-500 mb-1">TEMPO</div>
+                      <div className="text-[8px] text-slate-500 mb-1">TIME</div>
                       <div className="text-lg">{elapsed.toFixed(1)}s</div>
                     </div>
                     <div
                       className="rounded-[10px] border-4 border-black bg-white p-4"
                       style={pxShadow()}
                     >
-                      <div className="text-[8px] text-slate-500 mb-1">PUNTEGGIO</div>
+                      <div className="text-[8px] text-slate-500 mb-1">SCORE</div>
                       <div className="text-lg">{score}</div>
                     </div>
                   </div>
@@ -2016,10 +2017,10 @@ export default function OmbrelliHeistGame() {
                     className="mt-5 rounded-[10px] border-4 border-black bg-white p-4 text-left"
                     style={pxShadow()}
                   >
-                    <div className="text-[8px] text-slate-500 mb-2">CLASSIFICA</div>
+                    <div className="text-[8px] text-slate-500 mb-2">LEADERBOARD</div>
 
                     {leaderboard.length === 0 ? (
-                      <div className="text-[10px] text-slate-700">Nessun punteggio registrato.</div>
+                      <div className="text-[10px] text-slate-700">No scores yet.</div>
                     ) : (
                       <div className="space-y-2">
                         {leaderboard.map((entry, index) => (
@@ -2043,7 +2044,7 @@ export default function OmbrelliHeistGame() {
                     style={pxShadow()}
                     onClick={startGame}
                   >
-                    RIPROVA
+                    TRY AGAIN
                   </button>
                 </div>
               </motion.div>

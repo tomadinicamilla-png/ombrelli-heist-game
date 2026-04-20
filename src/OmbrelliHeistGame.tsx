@@ -2008,7 +2008,7 @@ export default function OmbrelliHeistGame() {
                       className="rounded-[10px] border-4 border-black bg-white p-4"
                       style={pxShadow()}
                     >
-                      <div className="text-[8px] text-slate-500 mb-1">SCORE</div>
+                      <div className="text-[8px] text-slate-500 mb-1">PUNTEGGIO</div>
                       <div className="text-lg">{score}</div>
                     </div>
                   </div>

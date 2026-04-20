@@ -945,7 +945,7 @@ The worse the weather, the higher the risk and the reward.
         <div className="mt-6 grid md:grid-cols-3 gap-3 text-left">
           <div className="rounded-[10px] border-4 border-black bg-white p-4" style={pxShadow()}>
             <div className="text-[8px] text-slate-500 mb-1">MISSION</div>
-            <div className="text-sm leading-5">Clear the umbrella rack before time runs out.</div>
+            <div className="text-sm leading-5">Clear the umbrella rack. Beat the clock.</div>
           </div>
           <div className="rounded-[10px] border-4 border-black bg-white p-4" style={pxShadow()}>
             <div className="text-[8px] text-slate-500 mb-1">BEWARE</div>

@@ -1732,14 +1732,14 @@ export default function OmbrelliHeistGame() {
           <div className="absolute inset-x-0 bottom-[92px] h-1 bg-black/20" />
 
           <div
-  className="absolute left-[86px] bottom-[88px] w-[620px] h-[340px] rounded-[20px] border-4 border-black overflow-visible"
+  className="absolute left-1/2 -translate-x-[58%] bottom-[88px] w-[620px] h-[340px] rounded-[20px] border-4 border-black overflow-visible"
   style={{
     ...pxShadow(),
     backgroundColor: "#b85b35",
     backgroundImage: `
-      linear-gradient(rgba(0,0,0,0.16) 2px, transparent 2px),
-      linear-gradient(90deg, rgba(0,0,0,0.14) 2px, transparent 2px),
-      linear-gradient(#c86a42, #a84d2a)
+      linear-gradient(rgba(0,0,0,0.14) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(0,0,0,0.12) 2px, transparent 2px),
+      linear-gradient(#c96d46, #a84d2a)
     `,
     backgroundSize: "26px 14px, 52px 28px, 100% 100%",
   }}
@@ -1766,100 +1766,104 @@ export default function OmbrelliHeistGame() {
           transparent 20px
         )
       `,
-      backgroundSize: "100% 100%, 100% 100%",
     }}
   />
 
-  {/* fila di luci */}
-  {[
-    "left-[48px]",
-    "left-[128px]",
-    "left-[208px]",
-    "left-[288px]",
-    "left-[368px]",
-    "left-[448px]",
-    "left-[528px]",
-  ].map((pos, i) => (
-    <div
-      key={i}
-      className={`absolute -top-[6px] ${pos} w-[12px] h-[12px] rounded-full border-2 border-black bg-yellow-200`}
-      style={{ boxShadow: "0 0 10px rgba(255,240,140,.9)" }}
-    />
-  ))}
-
   {/* insegna */}
   <div
-    className="absolute top-[-2px] left-1/2 -translate-x-1/2 px-8 py-2 border-4 border-black bg-yellow-300 text-black text-[26px] tracking-[0.18em] z-10"
+    className="absolute top-[8px] left-1/2 -translate-x-1/2 z-20 px-8 py-2 border-4 border-black bg-yellow-300 text-black text-[26px] tracking-[0.18em]"
     style={pxShadow()}
   >
     OSTERIA
   </div>
 
-  {/* tenda sinistra alta */}
+  {/* luci alte */}
+  {[
+    "left-[72px]",
+    "left-[152px]",
+    "left-[232px]",
+    "left-[388px]",
+    "left-[468px]",
+    "left-[548px]",
+  ].map((pos, i) => (
+    <div
+      key={i}
+      className={`absolute top-[58px] ${pos} w-[12px] h-[12px] rounded-full border-2 border-black bg-yellow-200 z-10`}
+      style={{ boxShadow: "0 0 10px rgba(255,240,140,.9)" }}
+    />
+  ))}
+
+  {/* finestra sinistra */}
   <div
-    className="absolute top-[68px] left-[132px] flex border-4 border-black rounded-b-[10px] overflow-hidden"
+    className="absolute top-[118px] left-[86px] w-[132px] h-[118px] rounded-[12px] border-4 border-black bg-[#79b9e8]"
+    style={{
+      ...pxShadow(),
+      backgroundImage:
+        "linear-gradient(to bottom, rgba(255,255,255,.30), transparent 35%, rgba(0,0,0,.08))",
+    }}
+  >
+    <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[4px] bg-black" />
+  </div>
+
+  {/* finestra destra */}
+  <div
+    className="absolute top-[118px] right-[86px] w-[132px] h-[118px] rounded-[12px] border-4 border-black bg-[#79b9e8]"
+    style={{
+      ...pxShadow(),
+      backgroundImage:
+        "linear-gradient(to bottom, rgba(255,255,255,.30), transparent 35%, rgba(0,0,0,.08))",
+    }}
+  >
+    <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[4px] bg-black" />
+  </div>
+
+  {/* tende sopra finestra sinistra */}
+  <div
+    className="absolute top-[88px] left-[76px] flex border-4 border-black rounded-b-[10px] overflow-hidden z-10"
     style={pxShadow()}
   >
     {["bg-red-500", "bg-white", "bg-red-500", "bg-white", "bg-red-500", "bg-white"].map(
       (c, i) => (
-        <div key={i} className={`w-[18px] h-[34px] ${c} rounded-b-full`} />
+        <div key={i} className={`w-[24px] h-[34px] ${c} rounded-b-full`} />
       )
     )}
   </div>
 
-  {/* tenda destra alta */}
+  {/* tende sopra finestra destra */}
   <div
-    className="absolute top-[68px] left-[386px] flex border-4 border-black rounded-b-[10px] overflow-hidden"
+    className="absolute top-[88px] right-[76px] flex border-4 border-black rounded-b-[10px] overflow-hidden z-10"
     style={pxShadow()}
   >
     {["bg-red-500", "bg-white", "bg-red-500", "bg-white", "bg-red-500", "bg-white"].map(
       (c, i) => (
-        <div key={i} className={`w-[18px] h-[34px] ${c} rounded-b-full`} />
+        <div key={i} className={`w-[24px] h-[34px] ${c} rounded-b-full`} />
       )
     )}
   </div>
 
-  {/* cornici decorative dietro alle finestre */}
+  {/* porta centrata */}
   <div
-    className="absolute top-[102px] left-[214px] w-[124px] h-[122px] rounded-[12px] border-4 border-black bg-[#5ca7d8]"
-    style={{
-      boxShadow: "4px 4px 0 #000",
-      backgroundImage:
-        "linear-gradient(to bottom, rgba(255,255,255,.3), transparent 35%, rgba(0,0,0,.08))",
-    }}
-  />
-  <div
-    className="absolute top-[102px] left-[358px] w-[124px] h-[122px] rounded-[12px] border-4 border-black bg-[#5ca7d8]"
-    style={{
-      boxShadow: "4px 4px 0 #000",
-      backgroundImage:
-        "linear-gradient(to bottom, rgba(255,255,255,.3), transparent 35%, rgba(0,0,0,.08))",
-    }}
-  />
-
-  {/* porta */}
-  <div
-    className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[116px] h-[150px] rounded-t-[14px] border-4 border-black bg-[#c89458]"
+    className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[116px] h-[176px] rounded-t-[14px] border-4 border-black bg-[#c89458]"
     style={pxShadow()}
   >
-    <div className="absolute inset-x-[12px] top-[12px] bottom-[18px] border-4 border-black/20 rounded-t-[8px]" />
-    <div className="absolute right-[16px] top-1/2 -translate-y-1/2 w-[12px] h-[12px] rounded-full border-2 border-black bg-yellow-300" />
+    <div className="absolute inset-x-[10px] top-[12px] bottom-[14px] border-4 border-black/15 rounded-t-[8px]" />
+    <div className="absolute right-[14px] top-1/2 -translate-y-1/2 w-[12px] h-[12px] rounded-full border-2 border-black bg-yellow-300" />
   </div>
 
-  {/* lampade sopra porta */}
+  {/* luci ai lati porta */}
   <div
-    className="absolute left-[168px] top-[152px] w-[10px] h-[28px] border-2 border-black bg-yellow-200 rounded-full"
+    className="absolute left-[238px] top-[158px] w-[12px] h-[34px] border-2 border-black bg-yellow-200 rounded-full z-10"
     style={{ boxShadow: "0 0 10px rgba(255,240,140,.85)" }}
   />
   <div
-    className="absolute right-[168px] top-[152px] w-[10px] h-[28px] border-2 border-black bg-yellow-200 rounded-full"
+    className="absolute right-[238px] top-[158px] w-[12px] h-[34px] border-2 border-black bg-yellow-200 rounded-full z-10"
     style={{ boxShadow: "0 0 10px rgba(255,240,140,.85)" }}
   />
 
   {/* zoccolo */}
   <div className="absolute inset-x-0 bottom-0 h-[16px] bg-[#7a3a20] border-t-4 border-black" />
 
-  {/* finestre/attesa cameriere */}
+  {/* finestre gameplay cameriere */}
   <WindowFrame
     side="left"
     waiterVisible={
@@ -1879,9 +1883,9 @@ export default function OmbrelliHeistGame() {
     dangerSide={waiterSide}
   />
 
-  {/* tendine sopra le finestre reali */}
+  {/* tendine gameplay */}
   <motion.div
-    className="absolute left-[220px] top-[86px] w-[112px] h-[18px] border-4 border-black flex overflow-hidden rounded-t-[6px]"
+    className="absolute left-[220px] top-[104px] w-[112px] h-[18px] border-4 border-black flex overflow-hidden rounded-t-[6px] z-10"
     style={pxShadow()}
     animate={curtainLift === "left" ? { y: [-3, 0] } : { y: 0 }}
     transition={{ duration: 0.12 }}
@@ -1893,7 +1897,7 @@ export default function OmbrelliHeistGame() {
   </motion.div>
 
   <motion.div
-    className="absolute left-[364px] top-[86px] w-[112px] h-[18px] border-4 border-black flex overflow-hidden rounded-t-[6px]"
+    className="absolute left-[364px] top-[104px] w-[112px] h-[18px] border-4 border-black flex overflow-hidden rounded-t-[6px] z-10"
     style={pxShadow()}
     animate={curtainLift === "right" ? { y: [-3, 0] } : { y: 0 }}
     transition={{ duration: 0.12 }}
@@ -1914,7 +1918,7 @@ export default function OmbrelliHeistGame() {
       (caughtActor?.type === "waiter" && caughtActor.side === "left")
     }
     left={220}
-    top={102}
+    top={118}
   />
 
   <Waiter
@@ -1927,7 +1931,7 @@ export default function OmbrelliHeistGame() {
       (caughtActor?.type === "waiter" && caughtActor.side === "right")
     }
     left={364}
-    top={102}
+    top={118}
   />
 </div>
 

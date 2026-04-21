@@ -1938,35 +1938,36 @@ export default function OmbrelliHeistGame() {
           )}
 
           <div className="absolute top-3 left-3 right-3 z-20 relative">
-            <div className="flex items-start gap-2">
-              <HudBadge label="LEVEL" value={`${level}/${MAX_LEVEL}`} />
-              <HudBadge label="TIME" value={`${elapsed.toFixed(1)}s`} />
-              <HudBadge label="COMBO" value={`x${combo}`} />
-              <HudBadge label="SCORE" value={score} accent />
+  <div className="flex items-start gap-2">
+    <HudBadge label="LEVEL" value={`${level}/${MAX_LEVEL}`} />
+    <HudBadge label="TIME" value={`${elapsed.toFixed(1)}s`} />
+    <HudBadge label="COMBO" value={`x${combo}`} />
+    <HudBadge label="SCORE" value={score} accent />
 
-              <button
-                type="button"
-                onClick={paused ? resumeGame : pauseGame}
-                className="border-4 border-black bg-red-500 hover:bg-red-400 text-white px-3 py-2 min-w-[92px] rounded-[8px] transition"
-                style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}
-              >
-                <div className="text-[8px] mb-1 text-white/80">CTRL</div>
-                <div className="text-sm md:text-base leading-none">
-                  {paused ? "PLAY" : "PAUSE"}
-                </div>
-              </button>
-            </div>
+    <button
+      type="button"
+      onClick={paused ? resumeGame : pauseGame}
+      className="border-4 border-black bg-red-500 hover:bg-red-400 text-white px-3 py-2 min-w-[92px] rounded-[8px] transition"
+      style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}
+    >
+      <div className="text-[8px] mb-1 text-white/80">CTRL</div>
+      <div className="text-sm md:text-base leading-none">
+        {paused ? "PLAY" : "PAUSE"}
+      </div>
+    </button>
+  </div>
 
-            <div
-  className="absolute top-0 right-0 border-4 border-black bg-slate-950/90 text-white px-3 py-2 w-[176px] rounded-[8px]"
-  style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}
->
-  <div className="text-[8px] mb-1 text-slate-300">OBJECTIVE</div>
-  <div className="text-[11px] leading-4">UMBRELLAS: {remaining}</div>
-  <div className="mt-2 text-[8px] text-slate-300">DON'T GET CAUGHT</div>
+  <div
+    className="absolute top-0 right-0 border-4 border-black bg-slate-950/90 text-white px-3 py-2 w-[176px] rounded-[8px]"
+    style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}
+  >
+    <div className="text-[8px] mb-1 text-slate-300">OBJECTIVE</div>
+    <div className="text-[11px] leading-4">UMBRELLAS: {remaining}</div>
+    <div className="mt-2 text-[8px] text-slate-300">DON'T GET CAUGHT</div>
+  </div>
 </div>
 
-          <div className="absolute top-[72px] left-3 w-[52%] z-20">
+<div className="absolute top-[72px] left-3 w-[52%] z-20">
             <div
               className="border-4 border-black bg-slate-950/90 px-3 py-2 rounded-[10px] text-white"
               style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}

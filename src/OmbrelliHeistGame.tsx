@@ -7,7 +7,7 @@ const FONT = "'Press Start 2P', monospace";
 const PLAYER_IDLE_X = 955;
 const PLAYER_STEAL_X = 845;
 const RACK_X = 735;
-const RACK_Y = 458;
+const RACK_Y = 474;
 const MAX_LEVEL = 5;
 
 type RainLevel = "light" | "medium" | "heavy";
@@ -29,7 +29,7 @@ type Umbrella = UmbrellaType & {
   points: number;
 };
 
-type CustomerState = { kind: NpcKey; x: number } | null;
+type CustomerState = { kind: NpcKey; x: number; y?: number } | null;
 type CaughtActor =
   | null
   | { type: "waiter"; side: WaiterSide }
@@ -1502,11 +1502,17 @@ export default function OmbrelliHeistGame() {
   function spawnCustomer() {
     const npc = NPCS[Math.floor(Math.random() * NPCS.length)];
     const startX = -120;
-    const endX = W + 40;
-    const duration = difficulty.customerDuration;
-    const startedAt = performance.now();
+    const fromDoor = Math.random() > 0.5;
+const doorX = 520;
+const leftExit = -140;
+const rightExit = W + 40;
 
-    setCustomer({ kind: npc.key, x: startX });
+const startX = doorX;
+const endX = fromDoor ? rightExit : leftExit;
+const duration = difficulty.customerDuration;
+const startedAt = performance.now();
+
+setCustomer({ kind: npc.key, x: startX, y: 0 });
 
     if (customerMoveRef.current) {
       window.clearInterval(customerMoveRef.current);
@@ -1515,9 +1521,13 @@ export default function OmbrelliHeistGame() {
     customerMoveRef.current = window.setInterval(() => {
       const progress = Math.min(1, (performance.now() - startedAt) / duration);
       const nextX = startX + (endX - startX) * progress;
-      setCustomer({ kind: npc.key, x: nextX });
+      setCustomer({
+  kind: npc.key,
+  x: nextX,
+  y: Math.min(14, progress * 20),
+});
 
-      const seesZone = nextX > 350 && nextX < 650;
+      const seesZone = nextX > 560 && nextX < 930;
       if (activeStealRef.current && seesZone) {
         if (customerMoveRef.current) {
           window.clearInterval(customerMoveRef.current);
@@ -1892,7 +1902,7 @@ export default function OmbrelliHeistGame() {
 </div>
 
           <div
-            className="absolute left-[700px] bottom-[108px] w-[206px] h-[120px] rounded-[16px] border-4 border-black bg-[#c0c7d1]"
+            className="absolute left-[700px] bottom-[92px] w-[206px] h-[120px] rounded-[16px] border-4 border-black bg-[#c0c7d1]"
             style={pxShadow()}
           >
             <div
@@ -1926,16 +1936,18 @@ export default function OmbrelliHeistGame() {
           <PlayerBack stealing={stealing} carrying={stealing} danger={dangerNow} />
 
           {customer && (
-            <Customer
-              kind={customer.kind}
-              x={customer.x}
-              attention={customerAttention}
-              angry={
-                caughtActor?.type === "customer" &&
-                caughtActor.kind === customer.kind
-              }
-            />
-          )}
+  <div style={{ transform: `translateY(${customer.y ?? 0}px)` }}>
+    <Customer
+      kind={customer.kind}
+      x={customer.x}
+      attention={customerAttention}
+      angry={
+        caughtActor?.type === "customer" &&
+        caughtActor.kind === customer.kind
+      }
+    />
+  </div>
+)}
 
           <div className="absolute top-3 left-3 right-3 z-20 relative">
   <div className="flex items-start gap-2">

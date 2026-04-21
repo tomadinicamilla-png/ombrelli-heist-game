@@ -1889,6 +1889,7 @@ export default function OmbrelliHeistGame() {
   left={402}
   top={132}
 />
+</div>
 
           <div
             className="absolute left-[470px] bottom-[94px] w-[206px] h-[120px] rounded-[16px] border-4 border-black bg-[#c0c7d1]"

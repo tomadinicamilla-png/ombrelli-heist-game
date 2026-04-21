@@ -1500,55 +1500,58 @@ export default function OmbrelliHeistGame() {
   }
 
   function spawnCustomer() {
-    const npc = NPCS[Math.floor(Math.random() * NPCS.length)];
-    const startX = -120;
-    const fromDoor = Math.random() > 0.5;
-const doorX = 520;
-const leftExit = -140;
-const rightExit = W + 40;
+  const npc = NPCS[Math.floor(Math.random() * NPCS.length)];
+  const fromDoorToRight = Math.random() > 0.5;
 
-const startX = doorX;
-const endX = fromDoor ? rightExit : leftExit;
-const duration = difficulty.customerDuration;
-const startedAt = performance.now();
+  const doorX = 520;
+  const leftExit = -140;
+  const rightExit = W + 40;
 
-setCustomer({ kind: npc.key, x: startX, y: 0 });
+  const startX = doorX;
+  const endX = fromDoorToRight ? rightExit : leftExit;
+  const duration = difficulty.customerDuration;
+  const startedAt = performance.now();
 
-    if (customerMoveRef.current) {
-      window.clearInterval(customerMoveRef.current);
+  setCustomer({ kind: npc.key, x: startX, y: 0 });
+
+  if (customerMoveRef.current) {
+    window.clearInterval(customerMoveRef.current);
+  }
+
+  customerMoveRef.current = window.setInterval(() => {
+    const progress = Math.min(1, (performance.now() - startedAt) / duration);
+    const nextX = startX + (endX - startX) * progress;
+
+    setCustomer({
+      kind: npc.key,
+      x: nextX,
+      y: Math.max(0, 14 - progress * 14),
+    });
+
+    const seesZone = nextX > 560 && nextX < 930;
+
+    if (activeStealRef.current && seesZone) {
+      if (customerMoveRef.current) {
+        window.clearInterval(customerMoveRef.current);
+        customerMoveRef.current = null;
+      }
+
+      triggerCaught(
+        { type: "customer", kind: npc.key },
+        `${npc.name} spotted you stealing an umbrella.`
+      );
+      return;
     }
 
-    customerMoveRef.current = window.setInterval(() => {
-      const progress = Math.min(1, (performance.now() - startedAt) / duration);
-      const nextX = startX + (endX - startX) * progress;
-      setCustomer({
-  kind: npc.key,
-  x: nextX,
-  y: Math.min(14, progress * 20),
-});
-
-      const seesZone = nextX > 560 && nextX < 930;
-      if (activeStealRef.current && seesZone) {
-        if (customerMoveRef.current) {
-          window.clearInterval(customerMoveRef.current);
-          customerMoveRef.current = null;
-        }
-        triggerCaught(
-          { type: "customer", kind: npc.key },
-          `${npc.name} spotted you stealing an umbrella.`
-        );
-        return;
+    if (progress >= 1) {
+      if (customerMoveRef.current) {
+        window.clearInterval(customerMoveRef.current);
+        customerMoveRef.current = null;
       }
-
-      if (progress >= 1) {
-        if (customerMoveRef.current) {
-          window.clearInterval(customerMoveRef.current);
-          customerMoveRef.current = null;
-        }
-        setCustomer(null);
-      }
-    }, 40);
-  }
+      setCustomer(null);
+    }
+  }, 40);
+}
 
   function startSteal(umbrella: Umbrella) {
     if (phase !== "playing" || stealing || paused) return;

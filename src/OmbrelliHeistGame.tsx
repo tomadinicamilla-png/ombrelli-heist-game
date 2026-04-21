@@ -4,8 +4,8 @@ import { AnimatePresence, motion } from "framer-motion";
 const W = 1100;
 const H = 620;
 const FONT = "'Press Start 2P', monospace";
-const PLAYER_IDLE_X = 930;
-const PLAYER_STEAL_X = 820;
+const PLAYER_IDLE_X = 955;
+const PLAYER_STEAL_X = 845;
 const RACK_X = 735;
 const RACK_Y = 458;
 const MAX_LEVEL = 5;
@@ -1732,7 +1732,7 @@ export default function OmbrelliHeistGame() {
           <div className="absolute inset-x-0 bottom-[92px] h-1 bg-black/20" />
 
           <div
-  className="absolute left-1/2 -translate-x-[58%] bottom-[88px] w-[620px] h-[340px] rounded-[20px] border-4 border-black overflow-visible"
+  className="absolute left-1/2 -translate-x-[54%] bottom-[88px] w-[620px] h-[340px] rounded-[20px] border-4 border-black overflow-visible"
   style={{
     ...pxShadow(),
     backgroundColor: "#b85b35",
@@ -1892,7 +1892,7 @@ export default function OmbrelliHeistGame() {
 </div>
 
           <div
-            className="absolute left-[700px] bottom-[94px] w-[206px] h-[120px] rounded-[16px] border-4 border-black bg-[#c0c7d1]"
+            className="absolute left-[700px] bottom-[108px] w-[206px] h-[120px] rounded-[16px] border-4 border-black bg-[#c0c7d1]"
             style={pxShadow()}
           >
             <div
@@ -1962,12 +1962,11 @@ export default function OmbrelliHeistGame() {
   style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}
 >
   <div className="text-[8px] mb-1 text-slate-300">OBJECTIVE</div>
-    <div <div className="text-[11px] leading-4">UMBRELLAS: {remaining}</div>
-    <div className="mt-2 text-[8px] text-slate-300">DON'T GET CAUGHT</div>
-  </div>
+  <div className="text-[11px] leading-4">UMBRELLAS: {remaining}</div>
+  <div className="mt-2 text-[8px] text-slate-300">DON'T GET CAUGHT</div>
 </div>
 
-          <div className="absolute top-[72px] left-3 w-[58%] z-20">
+          <div className="absolute top-[72px] left-3 w-[52%] z-20">
             <div
               className="border-4 border-black bg-slate-950/90 px-3 py-2 rounded-[10px] text-white"
               style={{ ...pxShadow(), backdropFilter: "blur(2px)" }}

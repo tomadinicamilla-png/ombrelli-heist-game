@@ -1613,6 +1613,35 @@ export default function OmbrelliHeistGame() {
     }, 40);
   }
 
+      function buildShareText() {
+  const resultLabel = phase === "won" ? "I cleared the rack" : "I got caught";
+  const gameUrl = "https://ombrelli-heist-game.vercel.app/";
+  return `☔ OMBRELLI HEIST
+${resultLabel} at level ${level}/${MAX_LEVEL} with ${score} points in ${elapsed.toFixed(1)}s.
+Can you beat me?
+${gameUrl}`;
+}
+
+  async function handleShareScore() {
+    const text = buildShareText();
+
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: "OMBRELLI HEIST",
+          text,
+        });
+        setMessage("Score shared.");
+        return;
+      }
+
+      await navigator.clipboard.writeText(text);
+      setMessage("Score copied to clipboard.");
+    } catch {
+      setMessage("Couldn't share the score.");
+    }
+  }
+
   useEffect(() => {
     if (phase !== "playing" || paused) return;
 
@@ -2135,14 +2164,25 @@ export default function OmbrelliHeistGame() {
                     )}
                   </div>
 
-                  <button
-                    type="button"
-                    className="mt-6 px-6 py-3 bg-yellow-300 hover:bg-yellow-200 text-black border-4 border-black rounded-[10px] text-sm transition"
-                    style={pxShadow()}
-                    onClick={startGame}
-                  >
-                    TRY AGAIN
-                  </button>
+                  <div className="mt-6 flex items-center justify-center gap-3">
+  <button
+    type="button"
+    className="px-6 py-3 bg-yellow-300 hover:bg-yellow-200 text-black border-4 border-black rounded-[10px] text-sm transition"
+    style={pxShadow()}
+    onClick={startGame}
+  >
+    TRY AGAIN
+  </button>
+
+  <button
+    type="button"
+    className="px-5 py-3 bg-white hover:bg-slate-100 text-black border-4 border-black rounded-[10px] text-sm transition"
+    style={pxShadow()}
+    onClick={handleShareScore}
+  >
+    SHARE SCORE
+  </button>
+</div>
                 </div>
               </motion.div>
             )}

@@ -6,8 +6,8 @@ const H = 620;
 const FONT = "'Press Start 2P', monospace";
 const PLAYER_IDLE_X = 955;
 const PLAYER_STEAL_X = 845;
-const RACK_X = 735;
-const RACK_Y = 474;
+coconst RACK_X = 748;
+const RACK_Y = 486;
 const MAX_LEVEL = 5;
 
 type RainLevel = "light" | "medium" | "heavy";
@@ -1905,7 +1905,7 @@ export default function OmbrelliHeistGame() {
 </div>
 
           <div
-            className="absolute left-[700px] bottom-[92px] w-[206px] h-[120px] rounded-[16px] border-4 border-black bg-[#c0c7d1]"
+            className="absolute left-[712px] bottom-[88px] w-[206px] h-[120px] ..."
             style={pxShadow()}
           >
             <div
@@ -1938,8 +1938,11 @@ export default function OmbrelliHeistGame() {
 
           <PlayerBack stealing={stealing} carrying={stealing} danger={dangerNow} />
 
-          {customer && (
-  <div style={{ transform: `translateY(${customer.y ?? 0}px)` }}>
+         {customer && (
+  <div
+    className="absolute inset-0 pointer-events-none"
+    style={{ transform: `translateY(${customer.y ?? 0}px)` }}
+  >
     <Customer
       kind={customer.kind}
       x={customer.x}

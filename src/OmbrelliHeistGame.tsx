@@ -4,10 +4,10 @@ import { AnimatePresence, motion } from "framer-motion";
 const W = 1100;
 const H = 620;
 const FONT = "'Press Start 2P', monospace";
-const PLAYER_IDLE_X = 760;
-const PLAYER_STEAL_X = 655;
-const RACK_X = 520;
-const RACK_Y = 438;
+const PLAYER_IDLE_X = 980;
+const PLAYER_STEAL_X = 875;
+const RACK_X = 735;
+const RACK_Y = 458;
 const MAX_LEVEL = 5;
 
 type RainLevel = "light" | "medium" | "heavy";
@@ -1863,77 +1863,32 @@ export default function OmbrelliHeistGame() {
   {/* zoccolo */}
   <div className="absolute inset-x-0 bottom-0 h-[16px] bg-[#7a3a20] border-t-4 border-black" />
 
-  {/* finestre gameplay cameriere */}
-  <WindowFrame
-    side="left"
-    waiterVisible={
-      waiterVisible ||
-      (caughtActor?.type === "waiter" && caughtActor.side === "left")
-    }
-    curtainLift={curtainLift}
-    dangerSide={waiterSide}
-  />
-  <WindowFrame
-    side="right"
-    waiterVisible={
-      waiterVisible ||
-      (caughtActor?.type === "waiter" && caughtActor.side === "right")
-    }
-    curtainLift={curtainLift}
-    dangerSide={waiterSide}
-  />
-
-  {/* tendine gameplay */}
-  <motion.div
-    className="absolute left-[220px] top-[104px] w-[112px] h-[18px] border-4 border-black flex overflow-hidden rounded-t-[6px] z-10"
-    style={pxShadow()}
-    animate={curtainLift === "left" ? { y: [-3, 0] } : { y: 0 }}
-    transition={{ duration: 0.12 }}
-  >
-    <div className="flex-1 bg-red-500" />
-    <div className="flex-1 bg-white" />
-    <div className="flex-1 bg-red-500" />
-    <div className="flex-1 bg-white" />
-  </motion.div>
-
-  <motion.div
-    className="absolute left-[364px] top-[104px] w-[112px] h-[18px] border-4 border-black flex overflow-hidden rounded-t-[6px] z-10"
-    style={pxShadow()}
-    animate={curtainLift === "right" ? { y: [-3, 0] } : { y: 0 }}
-    transition={{ duration: 0.12 }}
-  >
-    <div className="flex-1 bg-red-500" />
-    <div className="flex-1 bg-white" />
-    <div className="flex-1 bg-red-500" />
-    <div className="flex-1 bg-white" />
-  </motion.div>
 
   <Waiter
-    visible={
-      (waiterVisible && waiterSide === "left") ||
-      (caughtActor?.type === "waiter" && caughtActor.side === "left")
-    }
-    alert={
-      (waiterVisible && stealing) ||
-      (caughtActor?.type === "waiter" && caughtActor.side === "left")
-    }
-    left={220}
-    top={118}
-  />
+  visible={
+    (waiterVisible && waiterSide === "left") ||
+    (caughtActor?.type === "waiter" && caughtActor.side === "left")
+  }
+  alert={
+    (waiterVisible && stealing) ||
+    (caughtActor?.type === "waiter" && caughtActor.side === "left")
+  }
+  left={96}
+  top={132}
+/>
 
-  <Waiter
-    visible={
-      (waiterVisible && waiterSide === "right") ||
-      (caughtActor?.type === "waiter" && caughtActor.side === "right")
-    }
-    alert={
-      (waiterVisible && stealing) ||
-      (caughtActor?.type === "waiter" && caughtActor.side === "right")
-    }
-    left={364}
-    top={118}
-  />
-</div>
+<Waiter
+  visible={
+    (waiterVisible && waiterSide === "right") ||
+    (caughtActor?.type === "waiter" && caughtActor.side === "right")
+  }
+  alert={
+    (waiterVisible && stealing) ||
+    (caughtActor?.type === "waiter" && caughtActor.side === "right")
+  }
+  left={402}
+  top={132}
+/>
 
           <div
             className="absolute left-[470px] bottom-[94px] w-[206px] h-[120px] rounded-[16px] border-4 border-black bg-[#c0c7d1]"

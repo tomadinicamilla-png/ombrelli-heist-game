@@ -2210,15 +2210,16 @@ ${gameUrl}`;
     style={pxShadow()}
     onClick={handleShareScore}
   >
-    SHARE SCORE
-  </button>
-</div>
+                        SHARE SCORE
+                  </button>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </motion.div>
+    </div>
+  </div>
+</motion.div>
   );
 }

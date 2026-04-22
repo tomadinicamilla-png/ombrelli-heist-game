@@ -1183,7 +1183,9 @@ export default function OmbrelliHeistGame() {
     const scaleX = availableWidth / W;
     const scaleY = availableHeight / H;
 
-    setViewportScale(Math.min(scaleX, scaleY, 1));
+   setViewportScale(
+  Math.min(scaleX * (viewportWidth < 900 ? 1.25 : 1), 1)
+);
   }
 
   updateViewportScale();

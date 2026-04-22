@@ -890,35 +890,30 @@ function PlayerBack({
 
           {/* HOODIE */}
           <div
-            className="-mt-1 relative w-[88px] h-[68px] rounded-[16px] border-4 border-black bg-[#2563eb]"
+            className="-mt-1 relative w-[64px] h-[68px] rounded-[14px] border-4 border-black bg-[#2563eb]"
             style={{ boxShadow: "0 0 10px rgba(59,130,246,.18), 4px 4px 0 #000" }}
           >
             {/* hood */}
-            <div className="absolute left-1/2 -translate-x-1/2 -top-[2px] w-[46px] h-[22px] border-4 border-black bg-[#3b82f6] rounded-b-[14px]" />
-            <div className="absolute left-1/2 -translate-x-1/2 top-[16px] w-[18px] h-[18px] border-4 border-black bg-[#3b82f6] rounded-b-[8px]" />
-
-            {/* shoulders light */}
-            <div className="absolute left-[10px] top-[10px] w-[24px] h-[4px] bg-white/20 rounded-full" />
-            <div className="absolute right-[10px] top-[10px] w-[24px] h-[4px] bg-white/20 rounded-full" />
+           <div className="absolute left-1/2 -translate-x-1/2 top-[2px] w-[34px] h-[18px] border-4 border-black border-t-0 bg-[#3b82f6] rounded-b-[14px]" />
 
             {/* central seam */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-[18px] bottom-[12px] w-[4px] bg-black/15" />
+           <div className="absolute left-1/2 -translate-x-1/2 top-[18px] bottom-[12px] w-[4px] bg-black/15" />
 
             {/* pocket shadow */}
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-[10px] w-[34px] h-[4px] bg-black/10 rounded-full" />
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-[12px] w-[20px] h-[3px] bg-black/8 rounded-full" />
           </div>
 
           {/* ARMS */}
           <div
-            className="absolute -left-[12px] top-[66px] w-[12px] h-[22px] rounded-[4px] border-4 border-black bg-[#2563eb]"
+            className="absolute -left-[8px] top-[66px] w-[12px] h-[22px] rounded-[4px] border-4 border-black bg-[#2563eb]"
             style={pxShadow()}
           />
           <div
-            className="absolute -right-[12px] top-[66px] w-[12px] h-[22px] rounded-[4px] border-4 border-black bg-[#2563eb]"
+            className="absolute -right-[8px] top-[66px] w-[12px] h-[22px] rounded-[4px] border-4 border-black bg-[#2563eb]"
             style={pxShadow()}
           />
-          <div className="absolute -left-[12px] top-[84px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-b-[4px]" />
-          <div className="absolute -right-[12px] top-[84px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-b-[4px]" />
+          <div className="absolute -left-[8px] top-[84px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-b-[4px]" />
+          <div className="absolute -right-[8px] top-[84px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-b-[4px]" />
 
           {/* JEANS */}
           <div className="-mt-1 flex gap-[6px]">

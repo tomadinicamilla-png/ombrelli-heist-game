@@ -2239,10 +2239,11 @@ ${gameUrl}`;
               </div>
             </motion.div>
           )}
-        </AnimatePresence>
+                </AnimatePresence>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</motion.div>
+  </motion.div>
   );
 }

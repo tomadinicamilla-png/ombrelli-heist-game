@@ -905,16 +905,23 @@ function PlayerBack({
 
           {/* ARMS */}
 <div
-  className="absolute -left-[6px] top-[64px] w-[12px] h-[22px] rounded-[5px] border-4 border-black bg-[#2563eb]"
+  className="absolute -left-[6px] top-[60px] w-[12px] h-[28px] rounded-[6px] border-4 border-black bg-[#2563eb]"
   style={pxShadow()}
 />
 <div
-  className="absolute -right-[6px] top-[64px] w-[12px] h-[22px] rounded-[5px] border-4 border-black bg-[#2563eb]"
+  className="absolute -right-[6px] top-[60px] w-[12px] h-[28px] rounded-[6px] border-4 border-black bg-[#2563eb]"
   style={pxShadow()}
 />
 
-<div className="absolute -left-[6px] top-[84px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-b-[4px]" />
-<div className="absolute -right-[6px] top-[84px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-b-[4px]" />
+{/* HANDS */}
+<div
+  className="absolute -left-[6px] top-[86px] w-[10px] h-[12px] bg-[#ffd8ad] border-4 border-black rounded-[4px]"
+  style={pxShadow()}
+/>
+<div
+  className="absolute -right-[6px] top-[86px] w-[10px] h-[12px] bg-[#ffd8ad] border-4 border-black rounded-[4px]"
+  style={pxShadow()}
+/>
 
           {/* JEANS */}
           <div className="-mt-1 flex gap-[6px]">

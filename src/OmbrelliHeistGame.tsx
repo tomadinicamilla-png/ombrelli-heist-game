@@ -903,23 +903,28 @@ function PlayerBack({
             <div className="absolute left-1/2 -translate-x-1/2 bottom-[12px] w-[20px] h-[3px] bg-black/8 rounded-full" />
           </div>
 
-         {/* ARMS */}
+         {/* SLEEVES + HANDS */}
 <div
-  className="absolute left-[2px] top-[60px] w-[14px] h-[24px] rounded-[6px] border-4 border-black bg-[#2563eb] -rotate-[14deg]"
-  style={pxShadow()}
+  className="absolute left-[-2px] top-[58px] w-[20px] h-[28px] border-4 border-black bg-[#2563eb]"
+  style={{
+    ...pxShadow(),
+    clipPath: "polygon(22% 0%, 100% 0%, 78% 100%, 0% 78%)",
+  }}
 />
 <div
-  className="absolute right-[2px] top-[60px] w-[14px] h-[24px] rounded-[6px] border-4 border-black bg-[#2563eb] rotate-[14deg]"
-  style={pxShadow()}
+  className="absolute right-[-2px] top-[58px] w-[20px] h-[28px] border-4 border-black bg-[#2563eb]"
+  style={{
+    ...pxShadow(),
+    clipPath: "polygon(0% 0%, 78% 0%, 100% 78%, 22% 100%)",
+  }}
 />
 
-{/* HANDS */}
 <div
-  className="absolute left-[6px] top-[82px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-[4px]"
+  className="absolute left-[-4px] top-[80px] w-[10px] h-[12px] border-4 border-black bg-[#ffd8ad] rounded-[4px]"
   style={pxShadow()}
 />
 <div
-  className="absolute right-[6px] top-[82px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-[4px]"
+  className="absolute right-[-4px] top-[80px] w-[10px] h-[12px] border-4 border-black bg-[#ffd8ad] rounded-[4px]"
   style={pxShadow()}
 />
 

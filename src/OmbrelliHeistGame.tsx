@@ -890,7 +890,7 @@ function PlayerBack({
 
           {/* HOODIE */}
           <div
-            className="-mt-1 relative w-[64px] h-[68px] rounded-[14px] border-4 border-black bg-[#2563eb]"
+            className="-mt-1 relative w-[68px] h-[68px] rounded-[14px] border-4 border-black bg-[#2563eb]"
             style={{ boxShadow: "0 0 10px rgba(59,130,246,.18), 4px 4px 0 #000" }}
           >
             {/* hood */}
@@ -903,23 +903,23 @@ function PlayerBack({
             <div className="absolute left-1/2 -translate-x-1/2 bottom-[12px] w-[20px] h-[3px] bg-black/8 rounded-full" />
           </div>
 
-          {/* ARMS */}
+         {/* ARMS */}
 <div
-  className="absolute -left-[6px] top-[60px] w-[12px] h-[28px] rounded-[6px] border-4 border-black bg-[#2563eb]"
+  className="absolute left-[2px] top-[60px] w-[14px] h-[24px] rounded-[6px] border-4 border-black bg-[#2563eb] -rotate-[14deg]"
   style={pxShadow()}
 />
 <div
-  className="absolute -right-[6px] top-[60px] w-[12px] h-[28px] rounded-[6px] border-4 border-black bg-[#2563eb]"
+  className="absolute right-[2px] top-[60px] w-[14px] h-[24px] rounded-[6px] border-4 border-black bg-[#2563eb] rotate-[14deg]"
   style={pxShadow()}
 />
 
 {/* HANDS */}
 <div
-  className="absolute -left-[6px] top-[86px] w-[10px] h-[12px] bg-[#ffd8ad] border-4 border-black rounded-[4px]"
+  className="absolute left-[6px] top-[82px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-[4px]"
   style={pxShadow()}
 />
 <div
-  className="absolute -right-[6px] top-[86px] w-[10px] h-[12px] bg-[#ffd8ad] border-4 border-black rounded-[4px]"
+  className="absolute right-[6px] top-[82px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-[4px]"
   style={pxShadow()}
 />
 

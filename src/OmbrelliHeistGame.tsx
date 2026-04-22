@@ -808,7 +808,7 @@ function PlayerBack({
       <motion.div
         animate={
           stealing
-            ? { y: [0, -2, 0, -1, 0], scaleY: [1, 0.97, 1.03, 1] }
+            ? { y: [0, -2, 0, -1, 0], scaleY: [1, 0.98, 1.02, 1] }
             : danger
               ? { scaleX: [1, 1.02, 1] }
               : { y: 0, scaleY: 1, scaleX: 1 }
@@ -824,7 +824,7 @@ function PlayerBack({
         <div className="relative flex flex-col items-center">
           {carrying && (
             <motion.div
-              className="absolute -left-10 top-4 -rotate-[30deg]"
+              className="absolute -left-10 top-5 -rotate-[30deg]"
               initial={{ opacity: 0, x: 8, scale: 0.92 }}
               animate={{ opacity: 1, x: 0, scale: [1, 1.05, 1] }}
               exit={{ opacity: 0 }}
@@ -845,60 +845,109 @@ function PlayerBack({
             </motion.div>
           )}
 
+          {/* HEAD */}
           <div
-            className="relative w-[60px] h-[62px] rounded-[12px] border-4 border-black bg-[#ffd8ad]"
-            style={{
-              boxShadow: danger
-                ? "0 0 0 2px rgba(255,245,157,.28), 0 0 14px rgba(255,255,255,.08), 4px 4px 0 #000"
-                : "0 0 0 1px rgba(255,255,255,.08), 4px 4px 0 #000",
-            }}
+            className="relative w-[62px] h-[58px]"
+            style={{ filter: danger ? "drop-shadow(0 0 6px rgba(255,255,255,.12))" : "none" }}
           >
-            <div className="absolute inset-x-[2px] top-[2px] h-[17px] rounded-t-[8px] bg-[#101010] border-4 border-black" />
-            <div className="absolute inset-x-[2px] top-[15px] h-[8px] bg-[#101010] border-x-4 border-b-4 border-black" />
-            <div className="absolute left-[6px] top-[4px] w-[12px] h-[4px] bg-white/10 rounded-full" />
-            <div className="absolute left-1/2 -translate-x-1/2 top-[28px] w-[22px] h-[10px] bg-[#8b5e3c] rounded-full" />
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-[8px] w-[26px] h-[14px] bg-[#deb089] rounded-full" />
-            <div className="absolute left-1/2 -translate-x-1/2 top-[8px] w-[44px] h-[7px] bg-black rounded-full" />
-            <div className="absolute left-1/2 -translate-x-1/2 top-[2px] w-[28px] h-[16px] bg-[#101010] rounded-t-[8px] border-4 border-black" />
+            {/* ears */}
+            <div
+              className="absolute left-[2px] top-[22px] w-[8px] h-[16px] border-4 border-black bg-[#ffd8ad] rounded-[4px]"
+              style={pxShadow()}
+            />
+            <div
+              className="absolute right-[2px] top-[22px] w-[8px] h-[16px] border-4 border-black bg-[#ffd8ad] rounded-[4px]"
+              style={pxShadow()}
+            />
+
+            {/* cap back */}
+            <div
+              className="absolute left-1/2 -translate-x-1/2 top-0 w-[42px] h-[20px] border-4 border-black bg-[#1f2430] rounded-t-[8px]"
+              style={pxShadow()}
+            />
+            {/* cap top button */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-[2px] w-[6px] h-[6px] bg-[#4b5563] rounded-full border-2 border-black" />
+            {/* cap opening */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-[18px] w-[24px] h-[8px] border-4 border-black bg-[#111827] rounded-[4px]" />
+            {/* cap strap */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-[20px] w-[14px] h-[4px] bg-[#6b7280]" />
+
+            {/* hair */}
+            <div
+              className="absolute left-1/2 -translate-x-1/2 top-[22px] w-[46px] h-[24px] border-x-4 border-b-4 border-black bg-[#6b4226] rounded-b-[10px]"
+              style={pxShadow()}
+            />
+            <div className="absolute left-[18px] top-[32px] w-[4px] h-[8px] bg-[#7a4a2b]" />
+            <div className="absolute left-[26px] top-[34px] w-[4px] h-[8px] bg-[#7a4a2b]" />
+            <div className="absolute left-[34px] top-[32px] w-[4px] h-[8px] bg-[#7a4a2b]" />
+
+            {/* neck */}
+            <div
+              className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[18px] h-[12px] border-4 border-black bg-[#f0bf96] rounded-[4px]"
+              style={pxShadow()}
+            />
           </div>
 
+          {/* HOODIE */}
           <div
-            className="-mt-1 relative w-[84px] h-[62px] rounded-[14px] border-4 border-black bg-[#2f7dff]"
+            className="-mt-1 relative w-[88px] h-[68px] rounded-[16px] border-4 border-black bg-[#2563eb]"
             style={{ boxShadow: "0 0 10px rgba(59,130,246,.18), 4px 4px 0 #000" }}
           >
-            <div className="absolute inset-x-[10px] top-[10px] h-[4px] bg-white/25 rounded-full" />
-            <div className="absolute left-1/2 -translate-x-1/2 top-[10px] bottom-[10px] w-[4px] bg-black/12" />
-            <div className="absolute left-1/2 -translate-x-1/2 top-[10px] bottom-[10px] w-[3px] bg-black/20" />
-            <div className="absolute inset-x-[14px] bottom-[10px] h-[6px] bg-black/10 rounded-full" />
+            {/* hood */}
+            <div className="absolute left-1/2 -translate-x-1/2 -top-[2px] w-[46px] h-[22px] border-4 border-black bg-[#3b82f6] rounded-b-[14px]" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-[16px] w-[18px] h-[18px] border-4 border-black bg-[#3b82f6] rounded-b-[8px]" />
+
+            {/* shoulders light */}
+            <div className="absolute left-[10px] top-[10px] w-[24px] h-[4px] bg-white/20 rounded-full" />
+            <div className="absolute right-[10px] top-[10px] w-[24px] h-[4px] bg-white/20 rounded-full" />
+
+            {/* central seam */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-[18px] bottom-[12px] w-[4px] bg-black/15" />
+
+            {/* pocket shadow */}
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-[10px] w-[34px] h-[4px] bg-black/10 rounded-full" />
           </div>
 
+          {/* ARMS */}
+          <div
+            className="absolute -left-[12px] top-[66px] w-[12px] h-[22px] rounded-[4px] border-4 border-black bg-[#2563eb]"
+            style={pxShadow()}
+          />
+          <div
+            className="absolute -right-[12px] top-[66px] w-[12px] h-[22px] rounded-[4px] border-4 border-black bg-[#2563eb]"
+            style={pxShadow()}
+          />
+          <div className="absolute -left-[12px] top-[84px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-b-[4px]" />
+          <div className="absolute -right-[12px] top-[84px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-b-[4px]" />
+
+          {/* JEANS */}
           <div className="-mt-1 flex gap-[6px]">
             <motion.div
-              className="w-[14px] h-[22px] rounded-b-[5px] border-4 border-black bg-[#45627a]"
+              className="relative w-[18px] h-[30px] rounded-b-[5px] border-4 border-black bg-[#4b83c3]"
               style={pxShadow()}
               animate={stealing ? { y: [0, -1, 1, 0] } : { y: 0 }}
-              transition={
-                stealing ? { repeat: Infinity, duration: 0.22 } : { duration: 0.2 }
-              }
-            />
+              transition={stealing ? { repeat: Infinity, duration: 0.22 } : { duration: 0.2 }}
+            >
+              <div className="absolute inset-x-[2px] top-[5px] h-[3px] bg-white/15 rounded-full" />
+              <div className="absolute inset-x-[2px] bottom-[6px] h-[3px] bg-[#9fc4ee]" />
+            </motion.div>
+
             <motion.div
-              className="w-[14px] h-[22px] rounded-b-[5px] border-4 border-black bg-[#45627a]"
+              className="relative w-[18px] h-[30px] rounded-b-[5px] border-4 border-black bg-[#4b83c3]"
               style={pxShadow()}
               animate={stealing ? { y: [1, 0, -1, 0] } : { y: 0 }}
-              transition={
-                stealing ? { repeat: Infinity, duration: 0.22 } : { duration: 0.2 }
-              }
-            />
+              transition={stealing ? { repeat: Infinity, duration: 0.22 } : { duration: 0.2 }}
+            >
+              <div className="absolute inset-x-[2px] top-[5px] h-[3px] bg-white/15 rounded-full" />
+              <div className="absolute inset-x-[2px] bottom-[6px] h-[3px] bg-[#9fc4ee]" />
+            </motion.div>
           </div>
 
-          <div
-            className="absolute -left-[12px] top-[64px] w-[10px] h-[18px] rounded-[4px] border-4 border-black bg-[#2f7dff]"
-            style={pxShadow()}
-          />
-          <div
-            className="absolute -right-[12px] top-[64px] w-[10px] h-[18px] rounded-[4px] border-4 border-black bg-[#2f7dff]"
-            style={pxShadow()}
-          />
+          {/* SHOES */}
+          <div className="-mt-1 flex gap-[8px]">
+            <div className="w-[16px] h-[10px] border-4 border-black bg-[#111827] rounded-b-[6px]" style={pxShadow()} />
+            <div className="w-[16px] h-[10px] border-4 border-black bg-[#111827] rounded-b-[6px]" style={pxShadow()} />
+          </div>
         </div>
       </motion.div>
     </motion.div>

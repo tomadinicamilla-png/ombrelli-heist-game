@@ -1169,8 +1169,16 @@ export default function OmbrelliHeistGame() {
 
   useEffect(() => {
   function updateViewportScale() {
-    const availableWidth = window.innerWidth - 8;
-    const availableHeight = window.innerHeight - 8;
+    const vv = window.visualViewport;
+
+    const viewportWidth = vv?.width ?? window.innerWidth;
+    const viewportHeight = vv?.height ?? window.innerHeight;
+
+    const horizontalPadding = 8;
+    const verticalPadding = 8;
+
+    const availableWidth = viewportWidth - horizontalPadding * 2;
+    const availableHeight = viewportHeight - verticalPadding * 2;
 
     const scaleX = availableWidth / W;
     const scaleY = availableHeight / H;
@@ -1179,12 +1187,15 @@ export default function OmbrelliHeistGame() {
   }
 
   updateViewportScale();
+
   window.addEventListener("resize", updateViewportScale);
   window.addEventListener("orientationchange", updateViewportScale);
+  window.visualViewport?.addEventListener("resize", updateViewportScale);
 
   return () => {
     window.removeEventListener("resize", updateViewportScale);
     window.removeEventListener("orientationchange", updateViewportScale);
+    window.visualViewport?.removeEventListener("resize", updateViewportScale);
   };
 }, []);
 
@@ -1733,24 +1744,36 @@ ${gameUrl}`;
 
   return (
   <motion.div
-    className="min-h-screen bg-[#5fb6ff] text-white p-0 md:p-5 overflow-hidden"
+    className="w-screen min-h-[100dvh] bg-[#5fb6ff] text-white overflow-hidden"
     style={{ fontFamily: FONT }}
     animate={screenFlash === "danger" ? { x: [0, -5, 5, -3, 0] } : { x: 0 }}
     transition={{ duration: 0.18 }}
   >
-    <div className="w-screen h-screen md:h-auto md:w-auto flex items-start md:items-center justify-center overflow-hidden">
+    <div className="w-full min-h-[100dvh] flex items-center justify-center p-1 md:p-5 overflow-hidden">
       <div
-        className="border-4 border-black bg-[#79cbff] overflow-hidden rounded-[18px]"
         style={{
-          ...pxShadow(),
-          ...scanlines(),
-          width: W,
-          height: H,
-          transform: `scale(${viewportScale})`,
-          transformOrigin: "top center",
+          width: W * viewportScale,
+          height: H * viewportScale,
+          position: "relative",
+          overflow: "visible",
+          flexShrink: 0,
         }}
       >
-        <div className="relative overflow-hidden" style={{ width: W, height: H }}>
+        <div
+          className="border-4 border-black bg-[#79cbff] overflow-hidden rounded-[18px]"
+          style={{
+            ...pxShadow(),
+            ...scanlines(),
+            width: W,
+            height: H,
+            transform: `scale(${viewportScale})`,
+            transformOrigin: "top left",
+            position: "absolute",
+            top: 0,
+            left: 0,
+          }}
+        >
+          <div className="relative overflow-hidden" style={{ width: W, height: H }}>
           <div
             className={`absolute inset-0 bg-gradient-to-b ${
               weather === "light"

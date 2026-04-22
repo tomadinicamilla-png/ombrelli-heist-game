@@ -132,7 +132,7 @@ function randomWeather(): RainLevel {
 }
 
 function makeUmbrellas(level: number): Umbrella[] {
-  const count = Math.min(5 + level, 12);
+  const count = Math.min(5 + Math.floor(level * 0.8), 10);
   return Array.from({ length: count }).map((_, index) => {
     const type = UMBRELLA_TYPES[Math.floor(Math.random() * UMBRELLA_TYPES.length)];
     return {
@@ -1231,11 +1231,11 @@ export default function OmbrelliHeistGame() {
 
   const difficulty = useMemo(
     () => ({
-      waiterMin: Math.max(3000, 6200 - level * 260),
-      waiterMax: Math.max(4600, 9000 - level * 340),
+      waiterMin: Math.max(3400, 6200 - level * 200),
+      waiterMax: Math.max(5200, 9000 - level * 280),
       waiterVisibleMs: Math.min(1250 + level * 35, 1800),
-      customerGapMin: Math.max(3800, 7600 - level * 420),
-      customerGapMax: Math.max(5600, 10800 - level * 520),
+      customerGapMin: Math.max(4200, 7600 - level * 320),
+      customerGapMax: Math.max(6000, 10800 - level * 420),
       customerDuration: Math.max(3400, 7200 - level * 260),
     }),
     [level]
@@ -1610,6 +1610,7 @@ export default function OmbrelliHeistGame() {
 );
 
     const startedAt = performance.now();
+    const graceTime = 120; // ms
 
     if (stealIntervalRef.current) {
       window.clearInterval(stealIntervalRef.current);
@@ -1618,7 +1619,7 @@ export default function OmbrelliHeistGame() {
     stealIntervalRef.current = window.setInterval(() => {
       const progress = Math.min(
         100,
-        ((performance.now() - startedAt) / effectiveMs) * 100
+        ((performance.now() - startedAt - graceTime) / effectiveMs) * 100
       );
       setStealProgress(progress);
 

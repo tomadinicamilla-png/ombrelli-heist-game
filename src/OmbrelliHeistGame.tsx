@@ -888,68 +888,66 @@ function PlayerBack({
             />
           </div>
 
-          {/* HOODIE */}
-          <div
-            className="-mt-1 relative w-[68px] h-[68px] rounded-[14px] border-4 border-black bg-[#2563eb]"
-            style={{ boxShadow: "0 0 10px rgba(59,130,246,.18), 4px 4px 0 #000" }}
-          >
-            {/* hood */}
-           <div className="absolute left-1/2 -translate-x-1/2 top-[2px] w-[34px] h-[18px] border-4 border-black border-t-0 bg-[#3b82f6] rounded-b-[14px]" />
+          {/* HOOD */}
+<div className="absolute left-1/2 -translate-x-1/2 top-[-6px] w-[42px] h-[20px] border-4 border-black bg-[#1d4ed8] rounded-b-[12px]" />
 
-            {/* central seam */}
-           <div className="absolute left-1/2 -translate-x-1/2 top-[18px] bottom-[12px] w-[4px] bg-black/15" />
-
-            {/* pocket shadow */}
-            <div className="absolute left-1/2 -translate-x-1/2 bottom-[12px] w-[20px] h-[3px] bg-black/8 rounded-full" />
-          </div>
-
-         {/* SLEEVES + HANDS */}
+          {/* HOODIE BODY */}
 <div
-  className="absolute left-[-2px] top-[58px] w-[20px] h-[28px] border-4 border-black bg-[#2563eb]"
+  className="relative w-[68px] h-[64px] border-4 border-black bg-[#2563eb]"
   style={{
     ...pxShadow(),
-    clipPath: "polygon(22% 0%, 100% 0%, 78% 100%, 0% 78%)",
+    borderRadius: "14px",
   }}
-/>
-<div
-  className="absolute right-[-2px] top-[58px] w-[20px] h-[28px] border-4 border-black bg-[#2563eb]"
-  style={{
-    ...pxShadow(),
-    clipPath: "polygon(0% 0%, 78% 0%, 100% 78%, 22% 100%)",
-  }}
-/>
+>
+  {/* bottom hem */}
+  <div className="absolute inset-x-[8px] bottom-[6px] h-[4px] bg-black/20 rounded-full" />
 
-<div
-  className="absolute left-[-4px] top-[80px] w-[10px] h-[12px] border-4 border-black bg-[#ffd8ad] rounded-[4px]"
-  style={pxShadow()}
-/>
-<div
-  className="absolute right-[-4px] top-[80px] w-[10px] h-[12px] border-4 border-black bg-[#ffd8ad] rounded-[4px]"
-  style={pxShadow()}
-/>
+  {/* central fold */}
+  <div className="absolute left-1/2 -translate-x-1/2 top-[16px] bottom-[10px] w-[4px] bg-black/10" />
+
+  {/* sleeves (triangular) */}
+  <div
+    className="absolute left-[-6px] top-[18px] w-[20px] h-[28px] border-4 border-black bg-[#2563eb]"
+    style={{
+      ...pxShadow(),
+      clipPath: "polygon(20% 0%, 100% 0%, 80% 100%, 0% 80%)",
+    }}
+  />
+  <div
+    className="absolute right-[-6px] top-[18px] w-[20px] h-[28px] border-4 border-black bg-[#2563eb]"
+    style={{
+      ...pxShadow(),
+      clipPath: "polygon(0% 0%, 80% 0%, 100% 80%, 20% 100%)",
+    }}
+  />
+
+  {/* hands */}
+  <div
+    className="absolute left-[-4px] bottom-[4px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-[3px]"
+    style={pxShadow()}
+  />
+  <div
+    className="absolute right-[-4px] bottom-[4px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-[3px]"
+    style={pxShadow()}
+  />
+</div>
 
           {/* JEANS */}
-          <div className="-mt-1 flex gap-[6px]">
-            <motion.div
-              className="relative w-[18px] h-[30px] rounded-b-[5px] border-4 border-black bg-[#4b83c3]"
-              style={pxShadow()}
-              animate={stealing ? { y: [0, -1, 1, 0] } : { y: 0 }}
-              transition={stealing ? { repeat: Infinity, duration: 0.22 } : { duration: 0.2 }}
-            >
-              <div className="absolute inset-x-[2px] top-[5px] h-[3px] bg-white/15 rounded-full" />
-              <div className="absolute inset-x-[2px] bottom-[6px] h-[3px] bg-[#9fc4ee]" />
-            </motion.div>
+<div className="-mt-1 flex gap-[6px]">
+  <div
+    className="w-[18px] h-[28px] border-4 border-black bg-[#3b6ea5] rounded-b-[4px]"
+    style={pxShadow()}
+  >
+    <div className="absolute w-[8px] h-[3px] bg-white/20 top-[6px] left-[4px]" />
+  </div>
 
-            <motion.div
-              className="relative w-[18px] h-[30px] rounded-b-[5px] border-4 border-black bg-[#4b83c3]"
-              style={pxShadow()}
-              animate={stealing ? { y: [1, 0, -1, 0] } : { y: 0 }}
-              transition={stealing ? { repeat: Infinity, duration: 0.22 } : { duration: 0.2 }}
-            >
-              <div className="absolute inset-x-[2px] top-[5px] h-[3px] bg-white/15 rounded-full" />
-              <div className="absolute inset-x-[2px] bottom-[6px] h-[3px] bg-[#9fc4ee]" />
-            </motion.div>
-          </div>
+  <div
+    className="w-[18px] h-[28px] border-4 border-black bg-[#3b6ea5] rounded-b-[4px]"
+    style={pxShadow()}
+  >
+    <div className="absolute w-[8px] h-[3px] bg-white/20 top-[6px] left-[4px]" />
+  </div>
+</div>
 
           {/* SHOES */}
           <div className="-mt-1 flex gap-[8px]">

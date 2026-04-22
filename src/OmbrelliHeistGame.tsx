@@ -888,48 +888,46 @@ function PlayerBack({
             />
           </div>
 
-          {/* HOOD */}
-<div className="absolute left-1/2 -translate-x-1/2 top-[-6px] w-[42px] h-[20px] border-4 border-black bg-[#1d4ed8] rounded-b-[12px]" />
-
           {/* HOODIE BODY */}
 <div
-  className="relative w-[68px] h-[64px] border-4 border-black bg-[#2563eb]"
-  style={{
-    ...pxShadow(),
-    borderRadius: "14px",
-  }}
+  className="relative w-[68px] h-[64px] border-4 border-black bg-[#2563eb] rounded-[14px]"
+  style={pxShadow()}
 >
-  {/* bottom hem */}
-  <div className="absolute inset-x-[8px] bottom-[6px] h-[4px] bg-black/20 rounded-full" />
+  {/* hood behind neck */}
+  <div className="absolute left-1/2 -translate-x-1/2 -top-[2px] w-[34px] h-[18px] border-4 border-black border-t-0 bg-[#1d4ed8] rounded-b-[12px]" />
+
+  {/* shoulder shadow */}
+  <div className="absolute inset-x-[8px] top-[8px] h-[6px] bg-white/12 rounded-full" />
 
   {/* central fold */}
-  <div className="absolute left-1/2 -translate-x-1/2 top-[16px] bottom-[10px] w-[4px] bg-black/10" />
+  <div className="absolute left-1/2 -translate-x-1/2 top-[18px] bottom-[10px] w-[3px] bg-black/10 rounded-full" />
 
-  {/* sleeves (triangular) */}
+  {/* bottom hem */}
+  <div className="absolute inset-x-[10px] bottom-[6px] h-[4px] bg-black/15 rounded-full" />
+
+  {/* left sleeve */}
   <div
-    className="absolute left-[-6px] top-[18px] w-[20px] h-[28px] border-4 border-black bg-[#2563eb]"
+    className="absolute left-[-8px] top-[18px] w-[18px] h-[30px] border-4 border-black bg-[#1d4ed8] rounded-[6px]"
     style={{
-      ...pxShadow(),
-      clipPath: "polygon(20% 0%, 100% 0%, 80% 100%, 0% 80%)",
+      clipPath: "polygon(28% 0%, 100% 0%, 82% 100%, 0% 82%)",
     }}
   />
+
+  {/* right sleeve */}
   <div
-    className="absolute right-[-6px] top-[18px] w-[20px] h-[28px] border-4 border-black bg-[#2563eb]"
+    className="absolute right-[-8px] top-[18px] w-[18px] h-[30px] border-4 border-black bg-[#1d4ed8] rounded-[6px]"
     style={{
-      ...pxShadow(),
-      clipPath: "polygon(0% 0%, 80% 0%, 100% 80%, 20% 100%)",
+      clipPath: "polygon(0% 0%, 72% 0%, 100% 82%, 18% 100%)",
     }}
   />
+
+  {/* cuffs */}
+  <div className="absolute left-[-2px] top-[42px] w-[8px] h-[8px] bg-[#60a5fa] border-4 border-black rounded-[3px]" />
+  <div className="absolute right-[-2px] top-[42px] w-[8px] h-[8px] bg-[#60a5fa] border-4 border-black rounded-[3px]" />
 
   {/* hands */}
-  <div
-    className="absolute left-[-4px] bottom-[4px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-[3px]"
-    style={pxShadow()}
-  />
-  <div
-    className="absolute right-[-4px] bottom-[4px] w-[8px] h-[10px] bg-[#ffd8ad] border-4 border-black rounded-[3px]"
-    style={pxShadow()}
-  />
+  <div className="absolute left-[-2px] top-[50px] w-[8px] h-[12px] bg-[#ffd8ad] border-4 border-black rounded-[3px]" />
+  <div className="absolute right-[-2px] top-[50px] w-[8px] h-[12px] bg-[#ffd8ad] border-4 border-black rounded-[3px]" />
 </div>
 
           {/* JEANS */}

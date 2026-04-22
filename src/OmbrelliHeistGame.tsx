@@ -856,8 +856,10 @@ function PlayerBack({
             <div className="absolute inset-x-[2px] top-[2px] h-[17px] rounded-t-[8px] bg-[#101010] border-4 border-black" />
             <div className="absolute inset-x-[2px] top-[15px] h-[8px] bg-[#101010] border-x-4 border-b-4 border-black" />
             <div className="absolute left-[6px] top-[4px] w-[12px] h-[4px] bg-white/10 rounded-full" />
-            <div className="absolute inset-x-[6px] top-[25px] h-[12px] bg-[#5a3e2a]" />
-            <div className="absolute left-[10px] right-[10px] bottom-[6px] h-[12px] bg-[#deb089] rounded-full" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-[28px] w-[22px] h-[10px] bg-[#8b5e3c] rounded-full" />
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-[8px] w-[26px] h-[14px] bg-[#deb089] rounded-full" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-[8px] w-[44px] h-[7px] bg-black rounded-full" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-[2px] w-[28px] h-[16px] bg-[#101010] rounded-t-[8px] border-4 border-black" />
           </div>
 
           <div
@@ -866,6 +868,8 @@ function PlayerBack({
           >
             <div className="absolute inset-x-[10px] top-[10px] h-[4px] bg-white/25 rounded-full" />
             <div className="absolute left-1/2 -translate-x-1/2 top-[10px] bottom-[10px] w-[4px] bg-black/12" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-[10px] bottom-[10px] w-[3px] bg-black/20" />
+            <div className="absolute inset-x-[14px] bottom-[10px] h-[6px] bg-black/10 rounded-full" />
           </div>
 
           <div className="-mt-1 flex gap-[6px]">

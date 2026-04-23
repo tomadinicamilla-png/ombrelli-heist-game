@@ -696,59 +696,6 @@ function Customer({
   );
 }
 
-  return (
-    <motion.div
-      className="absolute bottom-[96px]"
-      style={{ left: x, width: 78, height: 124 }}
-      animate={{ y: [0, -1, 0], ...reactionFx }}
-      transition={{ repeat: Infinity, duration: 0.34 }}
-    >
-      <div className="relative flex flex-col items-center select-none">
-        <motion.div
-          className="relative w-[50px] h-[52px] rounded-[10px] border-4 border-black bg-[#f8dcc5]"
-          style={pxShadow()}
-          animate={attentionFx}
-          transition={{ repeat: Infinity, duration: 0.42 }}
-        >
-          <div className="absolute inset-x-[5px] top-[2px] h-[8px] rounded-t-[6px] bg-[#cfd8dc] border-b-[3px] border-black" />
-          <div className="absolute left-[10px] top-[18px] w-[4px] h-[4px] rounded-full bg-black" />
-          <div className="absolute right-[10px] top-[18px] w-[4px] h-[4px] rounded-full bg-black" />
-          <div className="absolute left-1/2 -translate-x-1/2 top-[28px] w-[8px] h-[5px] rounded-full bg-[#c68642]" />
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-[8px] w-[14px] h-[3px] rounded-full bg-[#8b5e3c]" />
-        </motion.div>
-        <motion.div
-          className="-mt-1 w-[56px] h-[54px] rounded-[12px] border-4 border-black bg-[#90a1b0]"
-          style={{
-            ...pxShadow(),
-            filter: attention || angry ? "saturate(1.08)" : "saturate(0.74)",
-          }}
-          animate={{ rotate: [1, -1, 1] }}
-          transition={{ repeat: Infinity, duration: 0.34 }}
-        />
-        <div className="-mt-1 flex gap-2">
-          <motion.div
-            className="w-[10px] h-[18px] rounded-b-[5px] border-4 border-black bg-[#577082]"
-            style={pxShadow()}
-            animate={legA}
-            transition={{ repeat: Infinity, duration: 0.22 }}
-          />
-          <motion.div
-            className="w-[10px] h-[18px] rounded-b-[5px] border-4 border-black bg-[#577082]"
-            style={pxShadow()}
-            animate={legB}
-            transition={{ repeat: Infinity, duration: 0.22 }}
-          />
-        </div>
-        {(attention || angry) && (
-          <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-[10px]">
-            {angry ? "💢" : "!"}
-          </div>
-        )}
-      </div>
-    </motion.div>
-  );
-}
-
 function UmbrellaPattern({
   pattern,
   accent,

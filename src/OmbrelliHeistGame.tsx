@@ -781,182 +781,157 @@ function PlayerBack({
   danger: boolean;
 }) {
   return (
+  <motion.div
+    className="absolute bottom-[96px]"
+    animate={
+      stealing
+        ? {
+            x: [PLAYER_IDLE_X, PLAYER_STEAL_X, PLAYER_STEAL_X + 4, PLAYER_STEAL_X],
+            y: [0, -1, 0, -1],
+          }
+        : danger
+          ? {
+              x: PLAYER_IDLE_X,
+              y: [0, -1, 0],
+              rotate: [0, -0.5, 0.5, 0],
+            }
+          : { x: PLAYER_IDLE_X, y: 0, rotate: 0 }
+    }
+    transition={
+      stealing
+        ? { duration: 0.45, ease: "easeOut" }
+        : danger
+          ? { repeat: Infinity, duration: 0.24 }
+          : { duration: 0.25 }
+    }
+  >
     <motion.div
-      className="absolute bottom-[96px]"
       animate={
         stealing
-          ? {
-              x: [PLAYER_IDLE_X, PLAYER_STEAL_X, PLAYER_STEAL_X + 4, PLAYER_STEAL_X],
-              y: [0, -1, 0, -1],
-            }
+          ? { y: [0, -2, 0, -1, 0], scaleY: [1, 0.98, 1.02, 1] }
           : danger
-            ? {
-                x: PLAYER_IDLE_X,
-                y: [0, -1, 0],
-                rotate: [0, -0.5, 0.5, 0],
-              }
-            : { x: PLAYER_IDLE_X, y: 0, rotate: 0 }
+            ? { scaleX: [1, 1.02, 1] }
+            : { y: 0, scaleY: 1, scaleX: 1 }
       }
       transition={
         stealing
-          ? { duration: 0.45, ease: "easeOut" }
+          ? { repeat: Infinity, duration: 0.28 }
           : danger
-            ? { repeat: Infinity, duration: 0.24 }
-            : { duration: 0.25 }
+            ? { repeat: Infinity, duration: 0.2 }
+            : { duration: 0.2 }
       }
     >
-      <motion.div
-        animate={
-          stealing
-            ? { y: [0, -2, 0, -1, 0], scaleY: [1, 0.98, 1.02, 1] }
-            : danger
-              ? { scaleX: [1, 1.02, 1] }
-              : { y: 0, scaleY: 1, scaleX: 1 }
-        }
-        transition={
-          stealing
-            ? { repeat: Infinity, duration: 0.28 }
-            : danger
-              ? { repeat: Infinity, duration: 0.2 }
-              : { duration: 0.2 }
-        }
-      >
-        <div className="relative flex flex-col items-center">
-          {carrying && (
-            <motion.div
-              className="absolute -left-10 top-5 -rotate-[30deg]"
-              initial={{ opacity: 0, x: 8, scale: 0.92 }}
-              animate={{ opacity: 1, x: 0, scale: [1, 1.05, 1] }}
-              exit={{ opacity: 0 }}
-              transition={{ repeat: Infinity, duration: 0.26 }}
-            >
-              <div className="relative w-10 h-[68px]">
-                <div
-                  className="absolute left-1/2 -translate-x-1/2 top-0 w-[30px] h-[36px] border-4 border-black bg-[#1a2231] rounded-t-[16px] rounded-b-[6px]"
-                  style={{
-                    clipPath:
-                      "polygon(6% 100%, 0% 34%, 10% 14%, 28% 2%, 50% 0%, 72% 2%, 90% 14%, 100% 34%, 94% 100%, 72% 90%, 50% 100%, 28% 90%)",
-                    boxShadow: "0 0 12px rgba(255,255,255,.06), 4px 4px 0 #000",
-                  }}
-                />
-                <div className="absolute left-1/2 -translate-x-1/2 top-[33px] w-[4px] h-[18px] bg-[#5d4630]" />
-                <div className="absolute left-1/2 translate-x-[2px] top-[49px] w-[10px] h-[10px] border-r-4 border-b-4 border-[#5d4630] rounded-br-full" />
-              </div>
-            </motion.div>
-          )}
-
-          {/* HEAD */}
-          <div
-            className="relative w-[62px] h-[58px]"
-            style={{ filter: danger ? "drop-shadow(0 0 6px rgba(255,255,255,.12))" : "none" }}
+      <div className="relative flex flex-col items-center">
+        {carrying && (
+          <motion.div
+            className="absolute -left-10 top-4 -rotate-[30deg]"
+            initial={{ opacity: 0, x: 8, scale: 0.92 }}
+            animate={{ opacity: 1, x: 0, scale: [1, 1.05, 1] }}
+            exit={{ opacity: 0 }}
+            transition={{ repeat: Infinity, duration: 0.26 }}
           >
-            {/* ears */}
-            <div
-              className="absolute left-[2px] top-[22px] w-[8px] h-[16px] border-4 border-black bg-[#ffd8ad] rounded-[4px]"
-              style={pxShadow()}
-            />
-            <div
-              className="absolute right-[2px] top-[22px] w-[8px] h-[16px] border-4 border-black bg-[#ffd8ad] rounded-[4px]"
-              style={pxShadow()}
-            />
+            <div className="relative w-10 h-[68px]">
+              <div
+                className="absolute left-1/2 -translate-x-1/2 top-0 w-[30px] h-[36px] border-2 border-black bg-[#1a2231] rounded-t-[16px] rounded-b-[6px]"
+                style={{
+                  clipPath:
+                    "polygon(6% 100%, 0% 34%, 10% 14%, 28% 2%, 50% 0%, 72% 2%, 90% 14%, 100% 34%, 94% 100%, 72% 90%, 50% 100%, 28% 90%)",
+                  boxShadow: "2px 2px 0 #000",
+                }}
+              />
+              <div className="absolute left-1/2 -translate-x-1/2 top-[33px] w-[3px] h-[18px] bg-[#5d4630]" />
+              <div className="absolute left-1/2 translate-x-[2px] top-[49px] w-[8px] h-[8px] border-r-2 border-b-2 border-[#5d4630] rounded-br-full" />
+            </div>
+          </motion.div>
+        )}
 
-            {/* cap back */}
-            <div
-              className="absolute left-1/2 -translate-x-1/2 top-0 w-[42px] h-[20px] border-4 border-black bg-[#1f2430] rounded-t-[8px]"
-              style={pxShadow()}
-            />
-            {/* cap top button */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-[2px] w-[6px] h-[6px] bg-[#4b5563] rounded-full border-2 border-black" />
-            {/* cap opening */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-[18px] w-[24px] h-[8px] border-4 border-black bg-[#111827] rounded-[4px]" />
-            {/* cap strap */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-[20px] w-[14px] h-[4px] bg-[#6b7280]" />
+        {/* TESTA */}
+        <div className="relative w-[54px] h-[52px]">
+          {/* cappellino */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[42px] h-[16px] rounded-t-[8px] border-2 border-black bg-[#111]" />
+          <div className="absolute left-1/2 -translate-x-1/2 top-[12px] w-[46px] h-[8px] rounded-[4px] border-2 border-black bg-[#111]" />
 
-            {/* hair */}
-            <div
-              className="absolute left-1/2 -translate-x-1/2 top-[22px] w-[46px] h-[24px] border-x-4 border-b-4 border-black bg-[#6b4226] rounded-b-[10px]"
-              style={pxShadow()}
-            />
-            <div className="absolute left-[18px] top-[32px] w-[4px] h-[8px] bg-[#7a4a2b]" />
-            <div className="absolute left-[26px] top-[34px] w-[4px] h-[8px] bg-[#7a4a2b]" />
-            <div className="absolute left-[34px] top-[32px] w-[4px] h-[8px] bg-[#7a4a2b]" />
+          {/* capelli dietro */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-[18px] w-[40px] h-[22px] rounded-b-[12px] bg-[#5a3e2a]" />
+          <div className="absolute left-[9px] top-[20px] w-[8px] h-[20px] rounded-l-[6px] bg-[#5a3e2a]" />
+          <div className="absolute right-[9px] top-[20px] w-[8px] h-[20px] rounded-r-[6px] bg-[#5a3e2a]" />
 
-            {/* neck */}
-            <div
-              className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[18px] h-[12px] border-4 border-black bg-[#f0bf96] rounded-[4px]"
-              style={pxShadow()}
-            />
-          </div>
-
-          {/* HOODIE BODY */}
-<div
-  className="relative w-[68px] h-[64px] border-4 border-black bg-[#2563eb] rounded-[14px]"
-  style={pxShadow()}
->
-  {/* hood behind neck */}
-  <div className="absolute left-1/2 -translate-x-1/2 -top-[2px] w-[34px] h-[18px] border-4 border-black border-t-0 bg-[#1d4ed8] rounded-b-[12px]" />
-
-  {/* shoulder shadow */}
-  <div className="absolute inset-x-[8px] top-[8px] h-[6px] bg-white/12 rounded-full" />
-
-  {/* central fold */}
-  <div className="absolute left-1/2 -translate-x-1/2 top-[18px] bottom-[10px] w-[3px] bg-black/10 rounded-full" />
-
-  {/* bottom hem */}
-  <div className="absolute inset-x-[10px] bottom-[6px] h-[4px] bg-black/15 rounded-full" />
-
-  {/* left sleeve */}
-  <div
-    className="absolute left-[-8px] top-[18px] w-[18px] h-[30px] border-4 border-black bg-[#1d4ed8] rounded-[6px]"
-    style={{
-      clipPath: "polygon(28% 0%, 100% 0%, 82% 100%, 0% 82%)",
-    }}
-  />
-
-  {/* right sleeve */}
-  <div
-    className="absolute right-[-8px] top-[18px] w-[18px] h-[30px] border-4 border-black bg-[#1d4ed8] rounded-[6px]"
-    style={{
-      clipPath: "polygon(0% 0%, 72% 0%, 100% 82%, 18% 100%)",
-    }}
-  />
-
-  {/* cuffs */}
-  <div className="absolute left-[-2px] top-[42px] w-[8px] h-[8px] bg-[#60a5fa] border-4 border-black rounded-[3px]" />
-  <div className="absolute right-[-2px] top-[42px] w-[8px] h-[8px] bg-[#60a5fa] border-4 border-black rounded-[3px]" />
-
-  {/* hands */}
-  <div className="absolute left-[-2px] top-[50px] w-[8px] h-[12px] bg-[#ffd8ad] border-4 border-black rounded-[3px]" />
-  <div className="absolute right-[-2px] top-[50px] w-[8px] h-[12px] bg-[#ffd8ad] border-4 border-black rounded-[3px]" />
-</div>
-
-          {/* JEANS */}
-<div className="-mt-1 flex gap-[6px]">
-  <div
-    className="w-[18px] h-[28px] border-4 border-black bg-[#3b6ea5] rounded-b-[4px]"
-    style={pxShadow()}
-  >
-    <div className="absolute w-[8px] h-[3px] bg-white/20 top-[6px] left-[4px]" />
-  </div>
-
-  <div
-    className="w-[18px] h-[28px] border-4 border-black bg-[#3b6ea5] rounded-b-[4px]"
-    style={pxShadow()}
-  >
-    <div className="absolute w-[8px] h-[3px] bg-white/20 top-[6px] left-[4px]" />
-  </div>
-</div>
-
-          {/* SHOES */}
-          <div className="-mt-1 flex gap-[8px]">
-            <div className="w-[16px] h-[10px] border-4 border-black bg-[#111827] rounded-b-[6px]" style={pxShadow()} />
-            <div className="w-[16px] h-[10px] border-4 border-black bg-[#111827] rounded-b-[6px]" style={pxShadow()} />
-          </div>
+          {/* collo */}
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[16px] h-[8px] bg-[#f2c29b]" />
         </div>
-      </motion.div>
+
+        {/* FELPA */}
+        <div className="-mt-1 relative w-[68px] h-[50px] rounded-[12px] border-2 border-black bg-[#2f7dff]">
+          {/* cappuccio dietro */}
+          <div className="absolute left-1/2 -translate-x-1/2 -top-[2px] w-[34px] h-[16px] rounded-b-[12px] border-2 border-black border-t-0 bg-[#3b82f6]" />
+
+          {/* piega centrale */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-[14px] bottom-[8px] w-[2px] bg-black/10 rounded-full" />
+
+          {/* bordo inferiore */}
+          <div className="absolute inset-x-[8px] bottom-[4px] h-[3px] bg-black/15 rounded-full" />
+
+          {/* manica sinistra */}
+          <div
+            className="absolute left-[-8px] top-[10px] w-[16px] h-[28px] rounded-[5px] border-2 border-black bg-[#2563eb]"
+            style={{
+              clipPath: "polygon(35% 0%, 100% 0%, 78% 100%, 0% 86%)",
+            }}
+          />
+
+          {/* manica destra */}
+          <div
+            className="absolute right-[-8px] top-[10px] w-[16px] h-[28px] rounded-[5px] border-2 border-black bg-[#2563eb]"
+            style={{
+              clipPath: "polygon(0% 0%, 65% 0%, 100% 86%, 22% 100%)",
+            }}
+          />
+
+          {/* polsini */}
+          <div className="absolute left-[-4px] top-[34px] w-[8px] h-[8px] rounded-[3px] border-2 border-black bg-[#4b93ff]" />
+          <div className="absolute right-[-4px] top-[34px] w-[8px] h-[8px] rounded-[3px] border-2 border-black bg-[#4b93ff]" />
+
+          {/* mani */}
+          <div className="absolute left-[-3px] top-[41px] w-[7px] h-[10px] rounded-[2px] border-2 border-black bg-[#f2c29b]" />
+          <div className="absolute right-[-3px] top-[41px] w-[7px] h-[10px] rounded-[2px] border-2 border-black bg-[#f2c29b]" />
+        </div>
+
+        {/* JEANS */}
+        <div className="-mt-1 relative flex gap-[6px]">
+          <motion.div
+            className="relative w-[18px] h-[38px] rounded-b-[4px] border-2 border-black bg-[#4b74a6]"
+            style={{ boxShadow: "2px 2px 0 #000" }}
+            animate={stealing ? { y: [0, -1, 1, 0] } : { y: 0 }}
+            transition={
+              stealing ? { repeat: Infinity, duration: 0.22 } : { duration: 0.2 }
+            }
+          >
+            <div className="absolute left-[4px] top-[6px] w-[8px] h-[3px] bg-white/20 rounded-full" />
+            <div className="absolute left-[5px] bottom-[5px] w-[8px] h-[3px] bg-white/18 rounded-full" />
+          </motion.div>
+
+          <motion.div
+            className="relative w-[18px] h-[38px] rounded-b-[4px] border-2 border-black bg-[#4b74a6]"
+            style={{ boxShadow: "2px 2px 0 #000" }}
+            animate={stealing ? { y: [1, 0, -1, 0] } : { y: 0 }}
+            transition={
+              stealing ? { repeat: Infinity, duration: 0.22 } : { duration: 0.2 }
+            }
+          >
+            <div className="absolute left-[4px] top-[6px] w-[8px] h-[3px] bg-white/20 rounded-full" />
+            <div className="absolute left-[5px] bottom-[5px] w-[8px] h-[3px] bg-white/18 rounded-full" />
+          </motion.div>
+        </div>
+
+        {/* scarpe */}
+        <div className="-mt-[2px] flex gap-[6px]">
+          <div className="w-[18px] h-[8px] rounded-[2px] bg-black" />
+          <div className="w-[18px] h-[8px] rounded-[2px] bg-black" />
+        </div>
+      </div>
     </motion.div>
-  );
-}
+  </motion.div>
+);
 
 function HudBadge({
   label,

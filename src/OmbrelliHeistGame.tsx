@@ -275,94 +275,69 @@ function Waiter({
 }) {
   return (
     <div
-      className="absolute overflow-hidden pointer-events-none"
+      className="absolute pointer-events-none"
       style={{ left, top, width: 112, height: 108 }}
     >
       <AnimatePresence>
         {visible && (
           <motion.div
-            initial={{ y: 58, opacity: 0.96, scale: 0.94 }}
-            animate={{ y: 18, opacity: 1, scale: 1 }}
-            exit={{ y: 58, opacity: 0.96, scale: 0.94 }}
-            transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ y: 50, opacity: 0.9 }}
+            animate={{ y: 16, opacity: 1 }}
+            exit={{ y: 50, opacity: 0.9 }}
+            transition={{ duration: 0.16 }}
             className="absolute left-1/2 -translate-x-1/2"
           >
             <motion.div
-              className="relative flex flex-col items-center"
+              className="flex flex-col items-center"
               animate={
                 alert
-                  ? { y: [0, 1, 0, 1], scaleX: [1, 1.04, 1, 1.04] }
+                  ? { y: [0, 1, 0], scaleX: [1, 1.03, 1] }
                   : { y: [0, 0.5, 0] }
               }
-              transition={
-                alert
-                  ? { repeat: Infinity, duration: 0.24 }
-                  : { repeat: Infinity, duration: 1.2 }
-              }
+              transition={{ repeat: Infinity, duration: 0.3 }}
             >
-              {/* testa */}
-              <motion.div
-                className="relative w-[46px] h-[44px]"
-                animate={alert ? { rotate: [0, -1, 1, 0] } : { rotate: 0 }}
-                transition={alert ? { repeat: Infinity, duration: 0.22 } : { duration: 0.2 }}
-              >
-                {/* capelli */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[34px] h-[10px] rounded-t-[6px] border-2 border-black bg-[#6b3f1f]" />
+              {/* TESTA */}
+              <div className="relative w-[42px] h-[40px]">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[30px] h-[8px] bg-[#6b3f1f] rounded-t-[6px]" />
 
-                {/* faccia */}
-                <div
-                  className="absolute left-1/2 -translate-x-1/2 top-[8px] w-[40px] h-[30px] rounded-[8px] border-2 border-black bg-[#ffd3a1]"
-                  style={{ boxShadow: "2px 2px 0 #000" }}
-                />
+                <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-[34px] h-[26px] bg-[#ffd3a1] border-2 border-black rounded-[6px]" />
+
+                {/* sopracciglia */}
+                <div className="absolute left-[10px] top-[12px] w-[6px] h-[2px] bg-black" />
+                <div className="absolute right-[10px] top-[12px] w-[6px] h-[2px] bg-black" />
 
                 {/* occhi */}
-                <div className="absolute left-[12px] top-[18px] w-[4px] h-[4px] rounded-full bg-black" />
-                <div className="absolute right-[12px] top-[18px] w-[4px] h-[4px] rounded-full bg-black" />
+                <div className="absolute left-[11px] top-[16px] w-[4px] h-[4px] bg-black rounded-full" />
+                <div className="absolute right-[11px] top-[16px] w-[4px] h-[4px] bg-black rounded-full" />
 
-                {/* naso */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-[22px] w-[4px] h-[4px] rounded-full bg-[#cf8b52]" />
-
-                {/* baffi più leggibili */}
-                <motion.div
-                  className="absolute left-[7px] top-[27px] h-[3px] rounded-full bg-[#3d1f0d]"
-                  animate={alert ? { width: [12, 16, 12] } : { width: [12, 13, 12] }}
-                  transition={{ repeat: Infinity, duration: 0.18 }}
-                />
-                <motion.div
-                  className="absolute right-[7px] top-[27px] h-[3px] rounded-full bg-[#3d1f0d]"
-                  animate={alert ? { width: [12, 16, 12] } : { width: [12, 13, 12] }}
-                  transition={{ repeat: Infinity, duration: 0.18 }}
-                />
+                {/* baffi */}
+                <div className="absolute left-[6px] top-[21px] w-[10px] h-[3px] bg-[#3d1f0d] rounded-full" />
+                <div className="absolute right-[6px] top-[21px] w-[10px] h-[3px] bg-[#3d1f0d] rounded-full" />
 
                 {/* bocca */}
-                <motion.div
-                  className="absolute left-1/2 -translate-x-1/2 top-[31px] h-[2px] rounded-full bg-black"
-                  animate={alert ? { width: [12, 18, 12] } : { width: [12, 14, 12] }}
-                  transition={{ repeat: Infinity, duration: 0.18 }}
-                />
-              </motion.div>
+                <div className="absolute left-1/2 -translate-x-1/2 top-[26px] w-[12px] h-[3px] bg-black rounded-full" />
+              </div>
 
-              {/* corpo */}
-              <motion.div
-                className="-mt-1 relative w-[56px] h-[34px] rounded-[8px] border-2 border-black bg-white"
-                style={{
-                  boxShadow: alert
-                    ? "0 0 10px rgba(255,82,82,.16), 2px 2px 0 #000"
-                    : "2px 2px 0 #000",
-                }}
-                animate={alert ? { y: [0, 2, 0] } : { y: 0 }}
-                transition={alert ? { repeat: Infinity, duration: 0.22 } : { duration: 0.2 }}
-              >
+              {/* CORPO */}
+              <div className="mt-[-2px] w-[50px] h-[38px] bg-white border-2 border-black rounded-[6px] relative">
                 {/* papillon */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-[8px] w-[10px] h-[6px] bg-black rounded-[2px]" />
-                <div className="absolute left-[20px] top-[8px] w-[4px] h-[4px] rotate-45 bg-black" />
-                <div className="absolute right-[20px] top-[8px] w-[4px] h-[4px] rotate-45 bg-black" />
+                <div className="absolute left-1/2 -translate-x-1/2 top-[6px] w-[8px] h-[4px] bg-black" />
 
                 {/* bottoni */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-[16px] w-[2px] h-[12px] bg-black/20" />
-                <div className="absolute left-1/2 -translate-x-1/2 top-[18px] w-[3px] h-[3px] rounded-full bg-black/30" />
-                <div className="absolute left-1/2 -translate-x-1/2 top-[24px] w-[3px] h-[3px] rounded-full bg-black/30" />
-              </motion.div>
+                <div className="absolute left-1/2 -translate-x-1/2 top-[14px] w-[2px] h-[14px] bg-black/20" />
+              </div>
+
+              {/* GAMBE */}
+              <div className="flex gap-[6px] mt-[-2px]">
+                <div className="w-[10px] h-[24px] bg-[#444] border-2 border-black" />
+                <div className="w-[10px] h-[24px] bg-[#444] border-2 border-black" />
+              </div>
+
+              {/* SCARPE */}
+              <div className="flex gap-[6px] mt-[-2px]">
+                <div className="w-[10px] h-[6px] bg-black" />
+                <div className="w-[10px] h-[6px] bg-black" />
+              </div>
             </motion.div>
           </motion.div>
         )}
@@ -382,317 +357,97 @@ function Customer({
   attention?: boolean;
   angry?: boolean;
 }) {
-  const legA = { y: [0, -2, 1, 0] };
-  const legB = { y: [1, 0, -2, 0] };
-  const reactionFx = angry ? { scale: [1, 1.08, 1.02], y: [0, -2, 0] } : {};
-  const attentionFx =
-    attention || angry ? { rotate: [0, -1, 0, 1, 0] } : { rotate: 0 };
+  const base = {
+    bottom: 92,
+  };
 
+  const Face = ({ skin = "#ffd4bf" }) => (
+    <div className="relative w-[40px] h-[36px]">
+      <div className="absolute top-[4px] left-1/2 -translate-x-1/2 w-[34px] h-[26px] bg-[${skin}] border-2 border-black rounded-[6px]" />
+
+      {/* sopracciglia */}
+      <div className="absolute left-[10px] top-[10px] w-[6px] h-[2px] bg-black" />
+      <div className="absolute right-[10px] top-[10px] w-[6px] h-[2px] bg-black" />
+
+      {/* occhi */}
+      <div className="absolute left-[11px] top-[14px] w-[4px] h-[4px] bg-black rounded-full" />
+      <div className="absolute right-[11px] top-[14px] w-[4px] h-[4px] bg-black rounded-full" />
+
+      {/* bocca */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-[20px] w-[12px] h-[3px] bg-black rounded-full" />
+    </div>
+  );
+
+  const Legs = () => (
+    <div className="flex gap-[6px] mt-[-2px]">
+      <div className="w-[10px] h-[24px] bg-[#577082] border-2 border-black" />
+      <div className="w-[10px] h-[24px] bg-[#577082] border-2 border-black" />
+    </div>
+  );
+
+  // ================= COUPLE =================
   if (kind === "couple") {
     return (
-      <motion.div
-        className="absolute bottom-[96px]"
-        style={{ left: x, width: 116, height: 124 }}
-        animate={{ y: [0, -1, 0], ...reactionFx }}
-        transition={{ repeat: Infinity, duration: 0.45 }}
-      >
-        <div className="relative flex items-end gap-2 select-none">
-          {/* personaggio sinistro */}
-          <motion.div
-            className="relative flex flex-col items-center"
-            animate={{ y: [0, -1, 0] }}
-            transition={{ repeat: Infinity, duration: 0.42 }}
-          >
-            <motion.div
-              className="relative w-[42px] h-[42px]"
-              animate={attentionFx}
-              transition={{ repeat: Infinity, duration: 0.55 }}
-            >
-              <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[30px] h-[8px] rounded-t-[6px] border-2 border-black bg-[#6b4a32]" />
-              <div
-                className="absolute left-1/2 -translate-x-1/2 top-[6px] w-[36px] h-[28px] rounded-[8px] border-2 border-black bg-[#ffd4bf]"
-                style={{ boxShadow: "2px 2px 0 #000" }}
-              />
-              <div className="absolute left-[11px] top-[16px] w-[4px] h-[4px] rounded-full bg-black" />
-              <div className="absolute right-[11px] top-[16px] w-[4px] h-[4px] rounded-full bg-black" />
-              <div className="absolute left-1/2 -translate-x-1/2 bottom-[7px] w-[12px] h-[2px] rounded-full bg-[#8b5e3c]" />
-            </motion.div>
+      <div className="absolute" style={{ left: x, bottom: base.bottom }}>
+        <div className="flex items-end gap-3 relative">
+          {/* sinistra */}
+          <div className="flex flex-col items-center">
+            <Face />
+            <div className="w-[42px] h-[46px] bg-[#ff8fd7] border-2 border-black mt-[-2px]" />
+            <Legs />
+          </div>
 
-            <motion.div
-              className="-mt-1 relative w-[40px] h-[42px] rounded-[10px] border-2 border-black bg-[#ff8fd7]"
-              style={{
-                boxShadow: "2px 2px 0 #000",
-                filter: attention || angry ? "saturate(1.08)" : "saturate(0.88)",
-              }}
-              animate={{ rotate: [-1, 1, -1] }}
-              transition={{ repeat: Infinity, duration: 0.5 }}
-            >
-              <div className="absolute left-1/2 -translate-x-1/2 top-[10px] bottom-[8px] w-[2px] bg-black/10" />
-            </motion.div>
+          {/* destra */}
+          <div className="flex flex-col items-center mt-[2px]">
+            <Face skin="#ffe1c7" />
+            <div className="w-[42px] h-[46px] bg-[#a983ff] border-2 border-black mt-[-2px]" />
+            <Legs />
+          </div>
 
-            <div className="-mt-1 flex gap-2">
-              <motion.div
-                className="w-[10px] h-[20px] rounded-b-[4px] border-2 border-black bg-[#577082]"
-                style={{ boxShadow: "2px 2px 0 #000" }}
-                animate={legA}
-                transition={{ repeat: Infinity, duration: 0.3 }}
-              />
-              <motion.div
-                className="w-[10px] h-[20px] rounded-b-[4px] border-2 border-black bg-[#577082]"
-                style={{ boxShadow: "2px 2px 0 #000" }}
-                animate={legB}
-                transition={{ repeat: Infinity, duration: 0.3 }}
-              />
-            </div>
-          </motion.div>
-
-          {/* personaggio destro */}
-          <motion.div
-            className="relative flex flex-col items-center mb-[2px]"
-            animate={{ y: [0, -1, 0] }}
-            transition={{ repeat: Infinity, duration: 0.48, delay: 0.08 }}
-          >
-            <motion.div
-              className="relative w-[42px] h-[42px]"
-              animate={attentionFx}
-              transition={{ repeat: Infinity, duration: 0.55, delay: 0.08 }}
-            >
-              <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[30px] h-[8px] rounded-t-[6px] border-2 border-black bg-[#2f2a27]" />
-              <div
-                className="absolute left-1/2 -translate-x-1/2 top-[6px] w-[36px] h-[28px] rounded-[8px] border-2 border-black bg-[#ffe1c7]"
-                style={{ boxShadow: "2px 2px 0 #000" }}
-              />
-              <div className="absolute left-[11px] top-[16px] w-[4px] h-[4px] rounded-full bg-black" />
-              <div className="absolute right-[11px] top-[16px] w-[4px] h-[4px] rounded-full bg-black" />
-              <div className="absolute left-1/2 -translate-x-1/2 bottom-[7px] w-[12px] h-[2px] rounded-full bg-[#8b5e3c]" />
-            </motion.div>
-
-            <motion.div
-              className="-mt-1 relative w-[40px] h-[42px] rounded-[10px] border-2 border-black bg-[#a983ff]"
-              style={{
-                boxShadow: "2px 2px 0 #000",
-                filter: attention || angry ? "saturate(1.08)" : "saturate(0.86)",
-              }}
-              animate={{ rotate: [1, -1, 1] }}
-              transition={{ repeat: Infinity, duration: 0.5, delay: 0.08 }}
-            >
-              <div className="absolute left-1/2 -translate-x-1/2 top-[10px] bottom-[8px] w-[2px] bg-black/10" />
-            </motion.div>
-
-            <div className="-mt-1 flex gap-2">
-              <motion.div
-                className="w-[10px] h-[20px] rounded-b-[4px] border-2 border-black bg-[#577082]"
-                style={{ boxShadow: "2px 2px 0 #000" }}
-                animate={legB}
-                transition={{ repeat: Infinity, duration: 0.3, delay: 0.08 }}
-              />
-              <motion.div
-                className="w-[10px] h-[20px] rounded-b-[4px] border-2 border-black bg-[#577082]"
-                style={{ boxShadow: "2px 2px 0 #000" }}
-                animate={legA}
-                transition={{ repeat: Infinity, duration: 0.3, delay: 0.08 }}
-              />
-            </div>
-          </motion.div>
-
-          {/* cuore centrato e leggibile */}
-          <motion.div
-            className="absolute left-1/2 -translate-x-1/2 top-[20px] text-[18px] text-red-500 drop-shadow-[1px_1px_0_#000]"
-            animate={{ y: [0, -1, 0], scale: [1, 1.08, 1] }}
-            transition={{ repeat: Infinity, duration: 0.6 }}
-          >
+          {/* cuore */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-[18px] text-[16px] text-red-500">
             ♥
-          </motion.div>
-
-          {(attention || angry) && (
-            <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-[10px]">
-              {angry ? "💢" : "!"}
-            </div>
-          )}
+          </div>
         </div>
-      </motion.div>
+      </div>
     );
   }
 
+  // ================= LADY + DOG =================
   if (kind === "lady-dog") {
     return (
-      <motion.div
-        className="absolute bottom-[96px]"
-        style={{ left: x, width: 104, height: 124 }}
-        animate={{ y: [0, -1, 0], ...reactionFx }}
-        transition={{ repeat: Infinity, duration: 0.42 }}
-      >
-        <div className="relative flex items-end gap-2 select-none">
+      <div className="absolute" style={{ left: x, bottom: base.bottom }}>
+        <div className="flex items-end gap-2">
           {/* signora */}
-          <motion.div
-            className="relative flex flex-col items-center"
-            animate={{ y: [0, -1, 0] }}
-            transition={{ repeat: Infinity, duration: 0.42 }}
-          >
-            <motion.div
-              className="relative w-[44px] h-[44px]"
-              animate={attentionFx}
-              transition={{ repeat: Infinity, duration: 0.55 }}
-            >
-              {/* cappellino */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[28px] h-[8px] rounded-full border-2 border-black bg-[#8b5cf6]" />
-              <div className="absolute left-1/2 -translate-x-1/2 top-[5px] w-[22px] h-[8px] rounded-t-[6px] border-2 border-black bg-[#5a2f7a]" />
+          <div className="flex flex-col items-center">
+            <Face />
+            <div className="w-[42px] h-[46px] bg-[#9f88ff] border-2 border-black mt-[-2px]" />
+            <Legs />
+          </div>
 
-              {/* faccia */}
-              <div
-                className="absolute left-1/2 -translate-x-1/2 top-[11px] w-[34px] h-[28px] rounded-[8px] border-2 border-black bg-[#ffd7b1]"
-                style={{ boxShadow: "2px 2px 0 #000" }}
-              />
-              <div className="absolute left-[12px] top-[21px] w-[4px] h-[4px] rounded-full bg-black" />
-              <div className="absolute right-[12px] top-[21px] w-[4px] h-[4px] rounded-full bg-black" />
-              <div className="absolute left-1/2 -translate-x-1/2 bottom-[7px] w-[12px] h-[2px] rounded-full bg-[#8b5e3c]" />
-            </motion.div>
-
-            <motion.div
-              className="-mt-1 relative w-[40px] h-[44px] rounded-[10px] border-2 border-black bg-[#9f88ff]"
-              style={{
-                boxShadow: "2px 2px 0 #000",
-                filter: attention || angry ? "saturate(1.08)" : "saturate(0.86)",
-              }}
-              animate={{ rotate: [-1, 1, -1] }}
-              transition={{ repeat: Infinity, duration: 0.46 }}
-            >
-              <div className="absolute left-1/2 -translate-x-1/2 top-[10px] bottom-[8px] w-[2px] bg-black/10" />
-            </motion.div>
-
-            <div className="-mt-1 flex gap-2">
-              <motion.div
-                className="w-[10px] h-[20px] rounded-b-[4px] border-2 border-black bg-[#577082]"
-                style={{ boxShadow: "2px 2px 0 #000" }}
-                animate={legA}
-                transition={{ repeat: Infinity, duration: 0.28 }}
-              />
-              <motion.div
-                className="w-[10px] h-[20px] rounded-b-[4px] border-2 border-black bg-[#577082]"
-                style={{ boxShadow: "2px 2px 0 #000" }}
-                animate={legB}
-                transition={{ repeat: Infinity, duration: 0.28 }}
-              />
-            </div>
-          </motion.div>
-
-          {/* cane leggibile */}
-          <motion.div
-            className="mb-[6px] relative w-[28px] h-[22px] rounded-[8px] border-2 border-black bg-[#ece7e2]"
-            style={{
-              boxShadow: "2px 2px 0 #000",
-              filter: attention || angry ? "brightness(1.05)" : "none",
-            }}
-            animate={{ y: [0, -1, 0], x: [0, 1, 0] }}
-            transition={{ repeat: Infinity, duration: 0.22 }}
-          >
-            {/* orecchie */}
-            <motion.div
-              className="absolute -top-[5px] left-[3px] w-[6px] h-[6px] bg-[#ece7e2] border-2 border-black rotate-45"
-              animate={{ rotate: [45, 25, 45] }}
-              transition={{ repeat: Infinity, duration: 0.18 }}
-            />
-            <motion.div
-              className="absolute -top-[5px] right-[3px] w-[6px] h-[6px] bg-[#ece7e2] border-2 border-black rotate-45"
-              animate={{ rotate: [45, 65, 45] }}
-              transition={{ repeat: Infinity, duration: 0.18 }}
-            />
-
-            {/* occhi */}
-            <div className="absolute left-[6px] top-[7px] w-[3px] h-[3px] rounded-full bg-black" />
-            <div className="absolute right-[6px] top-[7px] w-[3px] h-[3px] rounded-full bg-black" />
-
-            {/* naso */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-[10px] w-[4px] h-[3px] rounded-full bg-black" />
-
-            {/* coda */}
-            <motion.div
-              className="absolute right-[-8px] bottom-[4px] w-[10px] h-[4px] rounded-full bg-[#ece7e2] border-2 border-black"
-              animate={{ rotate: [0, 18, 0] }}
-              transition={{ repeat: Infinity, duration: 0.16 }}
-            />
-          </motion.div>
-
-          {/* guinzaglio */}
-          <div className="absolute left-[36px] top-[60px] w-[16px] h-[2px] bg-black rotate-[18deg]" />
-
-          {(attention || angry) && (
-            <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-[10px]">
-              {angry ? "💢" : "!"}
-            </div>
-          )}
+          {/* cane */}
+          <div className="w-[28px] h-[18px] bg-[#ece7e2] border-2 border-black relative mt-[12px]">
+            <div className="absolute left-[6px] top-[4px] w-[3px] h-[3px] bg-black rounded-full" />
+            <div className="absolute right-[6px] top-[4px] w-[3px] h-[3px] bg-black rounded-full" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-[8px] w-[4px] h-[3px] bg-black rounded-full" />
+          </div>
         </div>
-      </motion.div>
+      </div>
     );
   }
 
-  /* old-man */
+  // ================= OLD MAN =================
   return (
-    <motion.div
-      className="absolute bottom-[96px]"
-      style={{ left: x, width: 78, height: 124 }}
-      animate={{ y: [0, -1, 0], ...reactionFx }}
-      transition={{ repeat: Infinity, duration: 0.34 }}
-    >
-      <div className="relative flex flex-col items-center select-none">
-        <motion.div
-          className="relative w-[44px] h-[44px]"
-          animate={attentionFx}
-          transition={{ repeat: Infinity, duration: 0.42 }}
-        >
-          {/* capelli laterali / calvizie */}
-          <div className="absolute left-[6px] top-[4px] w-[8px] h-[8px] rounded-full bg-[#d6d6d6]" />
-          <div className="absolute right-[6px] top-[4px] w-[8px] h-[8px] rounded-full bg-[#d6d6d6]" />
-
-          {/* testa */}
-          <div
-            className="absolute left-1/2 -translate-x-1/2 top-[6px] w-[34px] h-[28px] rounded-[8px] border-2 border-black bg-[#f8dcc5]"
-            style={{ boxShadow: "2px 2px 0 #000" }}
-          />
-          <div className="absolute left-[12px] top-[16px] w-[4px] h-[4px] rounded-full bg-black" />
-          <div className="absolute right-[12px] top-[16px] w-[4px] h-[4px] rounded-full bg-black" />
-          <div className="absolute left-1/2 -translate-x-1/2 top-[22px] w-[6px] h-[4px] rounded-full bg-[#c68642]" />
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-[9px] w-[12px] h-[2px] rounded-full bg-[#8b5e3c]" />
-        </motion.div>
-
-        <motion.div
-          className="-mt-1 relative w-[38px] h-[44px] rounded-[10px] border-2 border-black bg-[#90a1b0]"
-          style={{
-            boxShadow: "2px 2px 0 #000",
-            filter: attention || angry ? "saturate(1.05)" : "saturate(0.82)",
-          }}
-          animate={{ rotate: [1, -1, 1] }}
-          transition={{ repeat: Infinity, duration: 0.34 }}
-        >
-          <div className="absolute left-1/2 -translate-x-1/2 top-[10px] bottom-[8px] w-[2px] bg-black/10" />
-        </motion.div>
-
-        <div className="-mt-1 flex gap-2">
-          <motion.div
-            className="w-[10px] h-[20px] rounded-b-[4px] border-2 border-black bg-[#577082]"
-            style={{ boxShadow: "2px 2px 0 #000" }}
-            animate={legA}
-            transition={{ repeat: Infinity, duration: 0.22 }}
-          />
-          <motion.div
-            className="w-[10px] h-[20px] rounded-b-[4px] border-2 border-black bg-[#577082]"
-            style={{ boxShadow: "2px 2px 0 #000" }}
-            animate={legB}
-            transition={{ repeat: Infinity, duration: 0.22 }}
-          />
-        </div>
+    <div className="absolute" style={{ left: x, bottom: base.bottom }}>
+      <div className="flex flex-col items-center">
+        <Face skin="#f8dcc5" />
+        <div className="w-[42px] h-[46px] bg-[#90a1b0] border-2 border-black mt-[-2px]" />
+        <Legs />
 
         {/* bastone */}
-        <div className="absolute right-[-10px] top-[44px] w-[3px] h-[34px] rounded-full bg-[#5b3a29] border border-black" />
-        <div className="absolute right-[-13px] top-[44px] w-[8px] h-[6px] border-2 border-[#5b3a29] border-b-0 rounded-t-full" />
-
-        {(attention || angry) && (
-          <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-[10px]">
-            {angry ? "💢" : "!"}
-          </div>
-        )}
+        <div className="absolute right-[-8px] top-[40px] w-[3px] h-[30px] bg-[#5b3a29]" />
       </div>
-    </motion.div>
+    </div>
   );
 }
 

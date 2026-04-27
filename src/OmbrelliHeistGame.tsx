@@ -551,7 +551,7 @@ const legB = {
 
         {/* guinzaglio: dalla mano destra al cane */}
 <svg
-  className="absolute left-[48px] top-[82px] z-10 pointer-events-none"
+  className="absolute left-[48px] top-[86px] z-10 pointer-events-none"
   width="50"
   height="34"
   viewBox="0 0 50 34"

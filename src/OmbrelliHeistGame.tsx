@@ -549,19 +549,23 @@ const legB = {
           <Legs color="#57413f" />
         </div>
 
-        {/* guinzaglio: parte dalla mano destra della donna e arriva al cane */}
-        <div
-          className="absolute z-10"
-          style={{
-            left: 50,
-            top: 98,
-            width: 34,
-            height: 2,
-            background: "#ef4444",
-            transform: "rotate(-10deg)",
-            transformOrigin: "left center",
-          }}
-        />
+        {/* guinzaglio: dalla mano destra al cane */}
+<svg
+  className="absolute left-[48px] top-[82px] z-10 pointer-events-none"
+  width="50"
+  height="34"
+  viewBox="0 0 50 34"
+>
+  <line
+    x1="0"
+    y1="8"
+    x2="42"
+    y2="28"
+    stroke="#ef4444"
+    strokeWidth="3"
+    strokeLinecap="round"
+  />
+</svg>
 
         <motion.div
           className="relative w-[36px] h-[28px] rounded-[9px] border-2 border-black bg-white"

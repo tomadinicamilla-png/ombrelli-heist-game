@@ -550,11 +550,24 @@ const legB = {
           </div>
 
           <motion.div
-            className="mb-[6px] relative w-[36px] h-[28px] rounded-[9px] border-2 border-black bg-white"
+            className="relative w-[36px] h-[28px] rounded-[9px] border-2 border-black bg-white"
+            style={{ top: "18px" }}
             style={{ boxShadow: "2px 2px 0 #000" }}
             animate={{ y: [0, -1, 0], x: [0, 1, 0] }}
             transition={{ repeat: Infinity, duration: 0.22 }}
           >
+            {/* guinzaglio */}
+<div
+  className="absolute"
+  style={{
+    left: 44,
+    top: 62,
+    width: 18,
+    height: 2,
+    background: "#ef4444",
+    transform: "rotate(20deg)",
+  }}
+/>
             <motion.div
               className="absolute -top-[8px] left-[3px] w-[9px] h-[10px] bg-white border-2 border-black rounded-t-full"
               animate={{ rotate: [-10, -28, -10] }}

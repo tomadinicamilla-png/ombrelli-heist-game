@@ -551,21 +551,22 @@ const legB = {
 
           <motion.div
             className="relative w-[36px] h-[28px] rounded-[9px] border-2 border-black bg-white"
-            style={{ top: "18px" }}
+            style={{ top: "20px" }}
             style={{ boxShadow: "2px 2px 0 #000" }}
             animate={{ y: [0, -1, 0], x: [0, 1, 0] }}
             transition={{ repeat: Infinity, duration: 0.22 }}
           >
-            {/* guinzaglio */}
+           {/* guinzaglio corretto */}
 <div
   className="absolute"
   style={{
-    left: 44,
-    top: 62,
-    width: 18,
+    left: 34,   // punto vicino alla mano destra
+    top: 78,    // altezza mano
+    width: 28,
     height: 2,
     background: "#ef4444",
-    transform: "rotate(20deg)",
+    transform: "rotate(28deg)",
+    transformOrigin: "left center",
   }}
 />
             <motion.div

@@ -524,78 +524,81 @@ const legB = {
   );
 
   if (kind === "lady-dog") {
-    return (
-      <motion.div
-        className="absolute bottom-[84px]"
-        style={{ left: x, width: 118, height: 144 }}
-        animate={{ y: [0, -1, 0], ...reactionFx }}
-        transition={{ repeat: Infinity, duration: 0.42 }}
-      >
-        <div className="relative flex items-end gap-2 select-none">
-          <div className="relative flex flex-col items-center">
-            <Face skin="#ffd7b1" hair="#ffd84d" smile />
-
-            <motion.div
-              className="-mt-1 relative w-[58px] h-[56px] rounded-[13px] border-2 border-black bg-[#ff8fd7]"
-              style={{ boxShadow: "2px 2px 0 #000" }}
-              animate={{ rotate: [-0.7, 0.7, -0.7] }}
-              transition={{ repeat: Infinity, duration: 0.46 }}
-            >
-              <Arms color="#e96fbf" skin="#ffd7b1" />
-              <div className="absolute inset-x-[12px] top-[9px] h-[4px] rounded-full bg-white/25" />
-              <div className="absolute left-1/2 -translate-x-1/2 top-[18px] bottom-[8px] w-[2px] bg-black/10 rounded-full" />
-            </motion.div>
-
-            <Legs color="#57413f" />
-          </div>
+  return (
+    <motion.div
+      className="absolute bottom-[84px]"
+      style={{ left: x, width: 118, height: 144 }}
+      animate={{ y: [0, -1, 0], ...reactionFx }}
+      transition={{ repeat: Infinity, duration: 0.42 }}
+    >
+      <div className="relative flex items-end gap-2 select-none">
+        <div className="relative flex flex-col items-center">
+          <Face skin="#ffd7b1" hair="#ffd84d" smile />
 
           <motion.div
-            className="relative w-[36px] h-[28px] rounded-[9px] border-2 border-black bg-white"
-            style={{ top: "20px" }}
+            className="-mt-1 relative w-[58px] h-[56px] rounded-[13px] border-2 border-black bg-[#ff8fd7]"
             style={{ boxShadow: "2px 2px 0 #000" }}
-            animate={{ y: [0, -1, 0], x: [0, 1, 0] }}
-            transition={{ repeat: Infinity, duration: 0.22 }}
+            animate={{ rotate: [-0.7, 0.7, -0.7] }}
+            transition={{ repeat: Infinity, duration: 0.46 }}
           >
-           {/* guinzaglio corretto */}
-<div
-  className="absolute"
-  style={{
-    left: 34,   // punto vicino alla mano destra
-    top: 78,    // altezza mano
-    width: 28,
-    height: 2,
-    background: "#ef4444",
-    transform: "rotate(28deg)",
-    transformOrigin: "left center",
-  }}
-/>
-            <motion.div
-              className="absolute -top-[8px] left-[3px] w-[9px] h-[10px] bg-white border-2 border-black rounded-t-full"
-              animate={{ rotate: [-10, -28, -10] }}
-              transition={{ repeat: Infinity, duration: 0.18 }}
-            />
-            <motion.div
-              className="absolute -top-[8px] right-[3px] w-[9px] h-[10px] bg-white border-2 border-black rounded-t-full"
-              animate={{ rotate: [10, 28, 10] }}
-              transition={{ repeat: Infinity, duration: 0.18 }}
-            />
-            <div className="absolute left-[9px] top-[9px] w-[3px] h-[3px] rounded-full bg-black" />
-            <div className="absolute right-[9px] top-[9px] w-[3px] h-[3px] rounded-full bg-black" />
-            <div className="absolute left-1/2 -translate-x-1/2 top-[15px] w-[5px] h-[4px] rounded-full bg-black" />
-            <motion.div
-              className="absolute right-[-9px] bottom-[5px] w-[12px] h-[5px] rounded-full bg-white border-2 border-black"
-              animate={{ rotate: [-18, 18, -18] }}
-              transition={{ repeat: Infinity, duration: 0.16 }}
-            />
-            <div className="absolute left-[5px] bottom-[-5px] w-[8px] h-[5px] bg-black rounded-[2px]" />
-            <div className="absolute right-[5px] bottom-[-5px] w-[8px] h-[5px] bg-black rounded-[2px]" />
+            <Arms color="#e96fbf" skin="#ffd7b1" />
+            <div className="absolute inset-x-[12px] top-[9px] h-[4px] rounded-full bg-white/25" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-[18px] bottom-[8px] w-[2px] bg-black/10 rounded-full" />
           </motion.div>
 
-          <Reaction />
+          <Legs color="#57413f" />
         </div>
-      </motion.div>
-    );
-  }
+
+        {/* guinzaglio: parte dalla mano destra della donna e arriva al cane */}
+        <div
+          className="absolute z-10"
+          style={{
+            left: 50,
+            top: 98,
+            width: 34,
+            height: 2,
+            background: "#ef4444",
+            transform: "rotate(-10deg)",
+            transformOrigin: "left center",
+          }}
+        />
+
+        <motion.div
+          className="relative w-[36px] h-[28px] rounded-[9px] border-2 border-black bg-white"
+          style={{
+            top: 20,
+            boxShadow: "2px 2px 0 #000",
+          }}
+          animate={{ y: [0, -1, 0], x: [0, 1, 0] }}
+          transition={{ repeat: Infinity, duration: 0.22 }}
+        >
+          <motion.div
+            className="absolute -top-[8px] left-[3px] w-[9px] h-[10px] bg-white border-2 border-black rounded-t-full"
+            animate={{ rotate: [-10, -28, -10] }}
+            transition={{ repeat: Infinity, duration: 0.18 }}
+          />
+          <motion.div
+            className="absolute -top-[8px] right-[3px] w-[9px] h-[10px] bg-white border-2 border-black rounded-t-full"
+            animate={{ rotate: [10, 28, 10] }}
+            transition={{ repeat: Infinity, duration: 0.18 }}
+          />
+          <div className="absolute left-[9px] top-[9px] w-[3px] h-[3px] rounded-full bg-black" />
+          <div className="absolute right-[9px] top-[9px] w-[3px] h-[3px] rounded-full bg-black" />
+          <div className="absolute left-1/2 -translate-x-1/2 top-[15px] w-[5px] h-[4px] rounded-full bg-black" />
+          <motion.div
+            className="absolute right-[-9px] bottom-[5px] w-[12px] h-[5px] rounded-full bg-white border-2 border-black"
+            animate={{ rotate: [-18, 18, -18] }}
+            transition={{ repeat: Infinity, duration: 0.16 }}
+          />
+          <div className="absolute left-[5px] bottom-[-5px] w-[8px] h-[5px] bg-black rounded-[2px]" />
+          <div className="absolute right-[5px] bottom-[-5px] w-[8px] h-[5px] bg-black rounded-[2px]" />
+        </motion.div>
+
+        <Reaction />
+      </div>
+    </motion.div>
+  );
+}
 
   if (kind === "old-man") {
     return (

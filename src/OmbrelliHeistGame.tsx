@@ -380,8 +380,17 @@ function Customer({
   attention?: boolean;
   angry?: boolean;
 }) {
-  const legA = { y: [0, -6, 0, 2, 0] };
-  const legB = { y: [2, 0, -6, 0, 2] };
+  const legA = {
+  y: [0, -8, 0, 3, 0],
+  x: [0, 2, 0, -1, 0],
+  rotate: [0, -7, 0, 5, 0],
+};
+
+const legB = {
+  y: [3, 0, -8, 0, 3],
+  x: [-1, 0, 2, 0, -1],
+  rotate: [5, 0, -7, 0, 5],
+};
   const reactionFx = angry ? { scale: [1, 1.06, 1.02], y: [0, -2, 0] } : {};
   const attentionFx =
     attention || angry ? { rotate: [0, -1, 0, 1, 0] } : { rotate: 0 };
@@ -441,32 +450,50 @@ function Customer({
   );
 
   const Legs = ({
-    color = "#315aa6",
-    delay = 0,
-  }: {
-    color?: string;
-    delay?: number;
-  }) => (
-    <div className="-mt-1 flex gap-[6px] items-start">
-      <motion.div
-        className="relative w-[13px] h-[30px] rounded-b-[5px] border-2 border-black"
-        style={{ background: color, boxShadow: "2px 2px 0 #000" }}
-        animate={legA}
-        transition={{ repeat: Infinity, duration: 0.56, delay, ease: "easeInOut" }}
-      >
-        <div className="absolute left-[-2px] bottom-[-6px] w-[16px] h-[7px] rounded-[3px] bg-black" />
-      </motion.div>
+  color = "#315aa6",
+  delay = 0,
+}: {
+  color?: string;
+  delay?: number;
+}) => (
+  <div className="-mt-1 flex gap-[6px] items-start">
+    <motion.div
+      className="relative w-[13px] h-[30px] rounded-b-[5px] border-2 border-black"
+      style={{
+        background: color,
+        boxShadow: "2px 2px 0 #000",
+        transformOrigin: "top center",
+      }}
+      animate={legA}
+      transition={{
+        repeat: Infinity,
+        duration: 0.72,
+        delay,
+        ease: "easeInOut",
+      }}
+    >
+      <div className="absolute left-[-2px] bottom-[-6px] w-[16px] h-[7px] rounded-[3px] bg-black" />
+    </motion.div>
 
-      <motion.div
-        className="relative w-[13px] h-[30px] rounded-b-[5px] border-2 border-black"
-        style={{ background: color, boxShadow: "2px 2px 0 #000" }}
-        animate={legB}
-        transition={{ repeat: Infinity, duration: 0.56, delay, ease: "easeInOut" }}
-      >
-        <div className="absolute left-[-2px] bottom-[-6px] w-[16px] h-[7px] rounded-[3px] bg-black" />
-      </motion.div>
-    </div>
-  );
+    <motion.div
+      className="relative w-[13px] h-[30px] rounded-b-[5px] border-2 border-black"
+      style={{
+        background: color,
+        boxShadow: "2px 2px 0 #000",
+        transformOrigin: "top center",
+      }}
+      animate={legB}
+      transition={{
+        repeat: Infinity,
+        duration: 0.72,
+        delay,
+        ease: "easeInOut",
+      }}
+    >
+      <div className="absolute left-[-2px] bottom-[-6px] w-[16px] h-[7px] rounded-[3px] bg-black" />
+    </motion.div>
+  </div>
+);
 
   const Arms = ({ color, skin }: { color: string; skin: string }) => (
     <>

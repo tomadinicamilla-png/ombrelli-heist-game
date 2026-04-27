@@ -380,8 +380,8 @@ function Customer({
   attention?: boolean;
   angry?: boolean;
 }) {
-  const legA = { y: [0, -2, 1, 0] };
-  const legB = { y: [1, 0, -2, 0] };
+  const legA = { y: [0, -3, 0, 1, 0] };
+  const legB = { y: [1, 0, -3, 0, 1] };
   const reactionFx = angry ? { scale: [1, 1.06, 1.02], y: [0, -2, 0] } : {};
   const attentionFx =
     attention || angry ? { rotate: [0, -1, 0, 1, 0] } : { rotate: 0 };
@@ -410,7 +410,10 @@ function Customer({
       animate={attentionFx}
       transition={{ repeat: Infinity, duration: 0.5 }}
     >
-      <div className="absolute inset-x-[5px] top-[2px] h-[11px] rounded-t-[7px]" style={{ background: hair }} />
+      <div
+        className="absolute inset-x-[5px] top-[2px] h-[11px] rounded-t-[7px]"
+        style={{ background: hair }}
+      />
 
       <div className="absolute left-[10px] top-[17px] w-[7px] h-[2px] bg-black rounded-full rotate-[-6deg]" />
       <div className="absolute right-[10px] top-[17px] w-[7px] h-[2px] bg-black rounded-full rotate-[6deg]" />
@@ -428,39 +431,67 @@ function Customer({
       ) : (
         <div
           className={`absolute left-1/2 -translate-x-1/2 bottom-[7px] ${
-            smile ? "w-[16px] h-[6px] border-b-2 border-black rounded-b-full" : "w-[14px] h-[3px] bg-[#8b5e3c] rounded-full"
+            smile
+              ? "w-[16px] h-[6px] border-b-2 border-black rounded-b-full"
+              : "w-[14px] h-[3px] bg-[#8b5e3c] rounded-full"
           }`}
         />
       )}
     </motion.div>
   );
 
-  const Legs = ({ color = "#315aa6", delay = 0 }: { color?: string; delay?: number }) => (
-    <div className="-mt-1 flex gap-[6px]">
+  const Legs = ({
+    color = "#315aa6",
+    delay = 0,
+  }: {
+    color?: string;
+    delay?: number;
+  }) => (
+    <div className="-mt-1 flex gap-[6px] items-start">
       <motion.div
-        className="w-[13px] h-[26px] rounded-b-[5px] border-2 border-black"
+        className="relative w-[13px] h-[30px] rounded-b-[5px] border-2 border-black"
         style={{ background: color, boxShadow: "2px 2px 0 #000" }}
         animate={legA}
-        transition={{ repeat: Infinity, duration: 0.3, delay }}
-      />
+        transition={{ repeat: Infinity, duration: 0.34, delay }}
+      >
+        <div className="absolute left-[-2px] bottom-[-6px] w-[16px] h-[7px] rounded-[3px] bg-black" />
+      </motion.div>
+
       <motion.div
-        className="w-[13px] h-[26px] rounded-b-[5px] border-2 border-black"
+        className="relative w-[13px] h-[30px] rounded-b-[5px] border-2 border-black"
         style={{ background: color, boxShadow: "2px 2px 0 #000" }}
         animate={legB}
-        transition={{ repeat: Infinity, duration: 0.3, delay }}
-      />
+        transition={{ repeat: Infinity, duration: 0.34, delay }}
+      >
+        <div className="absolute left-[-2px] bottom-[-6px] w-[16px] h-[7px] rounded-[3px] bg-black" />
+      </motion.div>
     </div>
   );
 
-  const Arms = ({ color }: { color: string }) => (
+  const Arms = ({ color, skin }: { color: string; skin: string }) => (
     <>
       <div
-        className="absolute left-[-7px] top-[14px] w-[13px] h-[28px] rounded-[5px] border-2 border-black"
-        style={{ background: color }}
+        className="absolute left-[-8px] top-[13px] w-[14px] h-[30px] rounded-[6px] border-2 border-black"
+        style={{
+          background: color,
+          clipPath: "polygon(35% 0%, 100% 0%, 78% 100%, 0% 86%)",
+        }}
       />
       <div
-        className="absolute right-[-7px] top-[14px] w-[13px] h-[28px] rounded-[5px] border-2 border-black"
-        style={{ background: color }}
+        className="absolute right-[-8px] top-[13px] w-[14px] h-[30px] rounded-[6px] border-2 border-black"
+        style={{
+          background: color,
+          clipPath: "polygon(0% 0%, 65% 0%, 100% 86%, 22% 100%)",
+        }}
+      />
+
+      <div
+        className="absolute left-[-8px] top-[40px] w-[9px] h-[11px] rounded-[3px] border-2 border-black"
+        style={{ background: skin }}
+      />
+      <div
+        className="absolute right-[-8px] top-[40px] w-[9px] h-[11px] rounded-[3px] border-2 border-black"
+        style={{ background: skin }}
       />
     </>
   );
@@ -468,8 +499,8 @@ function Customer({
   if (kind === "lady-dog") {
     return (
       <motion.div
-        className="absolute bottom-[92px]"
-        style={{ left: x, width: 118, height: 140 }}
+        className="absolute bottom-[90px]"
+        style={{ left: x, width: 118, height: 144 }}
         animate={{ y: [0, -1, 0], ...reactionFx }}
         transition={{ repeat: Infinity, duration: 0.42 }}
       >
@@ -483,7 +514,7 @@ function Customer({
               animate={{ rotate: [-0.7, 0.7, -0.7] }}
               transition={{ repeat: Infinity, duration: 0.46 }}
             >
-              <Arms color="#e96fbf" />
+              <Arms color="#e96fbf" skin="#ffd7b1" />
               <div className="absolute inset-x-[12px] top-[9px] h-[4px] rounded-full bg-white/25" />
               <div className="absolute left-1/2 -translate-x-1/2 top-[18px] bottom-[8px] w-[2px] bg-black/10 rounded-full" />
             </motion.div>
@@ -491,9 +522,8 @@ function Customer({
             <Legs color="#57413f" />
           </div>
 
-          {/* DOG */}
           <motion.div
-            className="mb-[2px] relative w-[36px] h-[28px] rounded-[9px] border-2 border-black bg-white"
+            className="mb-[6px] relative w-[36px] h-[28px] rounded-[9px] border-2 border-black bg-white"
             style={{ boxShadow: "2px 2px 0 #000" }}
             animate={{ y: [0, -1, 0], x: [0, 1, 0] }}
             transition={{ repeat: Infinity, duration: 0.22 }}
@@ -516,6 +546,8 @@ function Customer({
               animate={{ rotate: [-18, 18, -18] }}
               transition={{ repeat: Infinity, duration: 0.16 }}
             />
+            <div className="absolute left-[5px] bottom-[-5px] w-[8px] h-[5px] bg-black rounded-[2px]" />
+            <div className="absolute right-[5px] bottom-[-5px] w-[8px] h-[5px] bg-black rounded-[2px]" />
           </motion.div>
 
           <Reaction />
@@ -527,8 +559,8 @@ function Customer({
   if (kind === "old-man") {
     return (
       <motion.div
-        className="absolute bottom-[92px]"
-        style={{ left: x, width: 88, height: 140 }}
+        className="absolute bottom-[90px]"
+        style={{ left: x, width: 88, height: 144 }}
         animate={{ y: [0, -1, 0], ...reactionFx }}
         transition={{ repeat: Infinity, duration: 0.34 }}
       >
@@ -541,7 +573,7 @@ function Customer({
             animate={{ rotate: [0.6, -0.6, 0.6] }}
             transition={{ repeat: Infinity, duration: 0.34 }}
           >
-            <Arms color="#6f4524" />
+            <Arms color="#6f4524" skin="#f8dcc5" />
             <div className="absolute left-1/2 -translate-x-1/2 top-[5px] bottom-[8px] w-[9px] bg-[#2fbf62] border-x-2 border-black" />
             <div className="absolute left-[8px] top-[9px] w-[8px] h-[30px] bg-[#6f4524] rounded-full" />
             <div className="absolute right-[8px] top-[9px] w-[8px] h-[30px] bg-[#6f4524] rounded-full" />
@@ -557,28 +589,28 @@ function Customer({
 
   return (
     <motion.div
-      className="absolute bottom-[92px]"
-      style={{ left: x, width: 132, height: 140 }}
+      className="absolute bottom-[90px]"
+      style={{ left: x, width: 132, height: 144 }}
       animate={{ y: [0, -1, 0], ...reactionFx }}
       transition={{ repeat: Infinity, duration: 0.45 }}
     >
       <div className="relative flex items-end gap-2 select-none">
-        {/* SHE */}
         <div className="relative flex flex-col items-center">
           <Face skin="#ffd4bf" hair="#6b4a32" smile />
+
           <motion.div
             className="-mt-1 relative w-[56px] h-[56px] rounded-[12px] border-2 border-black bg-[#69c9ff]"
             style={{ boxShadow: "2px 2px 0 #000" }}
             animate={{ rotate: [-0.7, 0.7, -0.7] }}
             transition={{ repeat: Infinity, duration: 0.5 }}
           >
-            <Arms color="#4bb5ea" />
+            <Arms color="#4bb5ea" skin="#ffd4bf" />
             <div className="absolute inset-x-[11px] top-[9px] h-[4px] rounded-full bg-white/25" />
           </motion.div>
+
           <Legs color="#3f5d78" />
         </div>
 
-        {/* HEART */}
         <motion.div
           className="absolute left-1/2 -translate-x-1/2 top-[36px] text-[21px] text-red-500 drop-shadow-[2px_2px_0_#000] z-10"
           animate={{ scale: [1, 1.22, 1], y: [0, -2, 0] }}
@@ -587,18 +619,19 @@ function Customer({
           ♥
         </motion.div>
 
-        {/* HE */}
         <div className="relative flex flex-col items-center">
           <Face skin="#ffe1c7" hair="#2f2a27" smile />
+
           <motion.div
             className="-mt-1 relative w-[56px] h-[56px] rounded-[12px] border-2 border-black bg-[#31a354]"
             style={{ boxShadow: "2px 2px 0 #000" }}
             animate={{ rotate: [0.7, -0.7, 0.7] }}
             transition={{ repeat: Infinity, duration: 0.5, delay: 0.08 }}
           >
-            <Arms color="#268845" />
+            <Arms color="#268845" skin="#ffe1c7" />
             <div className="absolute inset-x-[11px] top-[9px] h-[4px] rounded-full bg-white/20" />
           </motion.div>
+
           <Legs color="#315aa6" delay={0.08} />
         </div>
 
